@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C08041F01B1F67640088E698 /* coupon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C08041EF1B1F67640088E698 /* coupon1.jpg */; };
+		C08041F51B1F83D20088E698 /* coupon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C08041F11B1F83D20088E698 /* coupon2.png */; };
+		C08041F61B1F83D20088E698 /* coupon3.png in Resources */ = {isa = PBXBuildFile; fileRef = C08041F21B1F83D20088E698 /* coupon3.png */; };
+		C08041F71B1F83D20088E698 /* coupon4.png in Resources */ = {isa = PBXBuildFile; fileRef = C08041F31B1F83D20088E698 /* coupon4.png */; };
+		C08041F81B1F83D20088E698 /* coupon6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C08041F41B1F83D20088E698 /* coupon6.jpg */; };
 		C0DECEFB1B1F4FA1001569D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DECEFA1B1F4FA1001569D1 /* AppDelegate.swift */; };
 		C0DECEFD1B1F4FA1001569D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DECEFC1B1F4FA1001569D1 /* ViewController.swift */; };
 		C0DECEFF1B1F4FA1001569D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0DECEFE1B1F4FA1001569D1 /* Images.xcassets */; };
@@ -25,6 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C08041EF1B1F67640088E698 /* coupon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coupon1.jpg; sourceTree = "<group>"; };
+		C08041F11B1F83D20088E698 /* coupon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon2.png; sourceTree = "<group>"; };
+		C08041F21B1F83D20088E698 /* coupon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon3.png; sourceTree = "<group>"; };
+		C08041F31B1F83D20088E698 /* coupon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon4.png; sourceTree = "<group>"; };
+		C08041F41B1F83D20088E698 /* coupon6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = coupon6.jpg; sourceTree = "<group>"; };
 		C0DECEF51B1F4FA1001569D1 /* JCP OSx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JCP OSx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0DECEF91B1F4FA1001569D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0DECEFA1B1F4FA1001569D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +87,13 @@
 			children = (
 				C0DECEFA1B1F4FA1001569D1 /* AppDelegate.swift */,
 				C0DECEFC1B1F4FA1001569D1 /* ViewController.swift */,
-				C0DECEFE1B1F4FA1001569D1 /* Images.xcassets */,
+				C08041EF1B1F67640088E698 /* coupon1.jpg */,
 				C0DECF001B1F4FA1001569D1 /* Main.storyboard */,
+				C0DECEFE1B1F4FA1001569D1 /* Images.xcassets */,
+				C08041F11B1F83D20088E698 /* coupon2.png */,
+				C08041F21B1F83D20088E698 /* coupon3.png */,
+				C08041F31B1F83D20088E698 /* coupon4.png */,
+				C08041F41B1F83D20088E698 /* coupon6.jpg */,
 				C0DECEF81B1F4FA1001569D1 /* Supporting Files */,
 			);
 			path = "JCP OSx";
@@ -189,8 +204,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08041F51B1F83D20088E698 /* coupon2.png in Resources */,
 				C0DECEFF1B1F4FA1001569D1 /* Images.xcassets in Resources */,
+				C08041F71B1F83D20088E698 /* coupon4.png in Resources */,
 				C0DECF021B1F4FA1001569D1 /* Main.storyboard in Resources */,
+				C08041F01B1F67640088E698 /* coupon1.jpg in Resources */,
+				C08041F81B1F83D20088E698 /* coupon6.jpg in Resources */,
+				C08041F61B1F83D20088E698 /* coupon3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +420,7 @@
 				C0DECF131B1F4FA1001569D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0DECF141B1F4FA1001569D1 /* Build configuration list for PBXNativeTarget "JCP OSxTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +429,7 @@
 				C0DECF161B1F4FA1001569D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
