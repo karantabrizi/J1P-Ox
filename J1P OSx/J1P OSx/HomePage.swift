@@ -14,29 +14,42 @@ class HomePage: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-    var coupons = [CouponData]()
-    let count=5
+    var couponsLeft = [CouponData]()
+    var couponsRight = [CouponData]()
+    
+    
     
     func createCoupons() {
         
-        for index in 1...count {
+        let numberOfCoupons=6
+        
+        // Creating coupons and put them in two arrays for two columns
+        for index in 1...numberOfCoupons {
     
     var coupon = CouponData (couponID: index, couponTitle: "Coupon\(index)", couponCode: "ABCDEFGH", couponDiscount: 20, couponImage: NSImage(named:"coupon\(index)"))
             
-            coupons.append(coupon)
+            // Separating the coupons for left and right column
+            if index%2 == 1 {couponsLeft.append(coupon)
+            } else {couponsRight.append(coupon)}
         
-//    var coupon2 = CouponData (couponID: 1, couponTitle: "Coupon1", couponCode: "NOWSHOP", couponDiscount: 20, couponImage: NSImage(named:"coupon3"))
             }
+        
+        // Preventing Errors if the columns are not the same size by repeating the last coupon
+        if couponsLeft.count != couponsRight.count
+        { couponsRight.append(couponsLeft.last!)}
+
+        
         }
+    
 }
 // Give the table number of rows
 extension HomePage: NSTableViewDataSource {
     func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
-        return self.coupons.count
+        return self.couponsLeft.count
     }
     
     @IBAction func TestButton(sender: NSButton) {
-        println("Hello")
+        println("hello")
     }
 // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -45,14 +58,14 @@ extension HomePage: NSTableViewDataSource {
         
 // Setting what each column does
         if tableColumn!.identifier == "LeftColumn" {
-
-            let couponData = self.coupons[row]
+            let couponData = self.couponsLeft[row]
             cellView.imageView!.image = couponData.couponImage
             cellView.textField!.stringValue = couponData.couponTitle!
             return cellView
         }
-        if tableColumn!.identifier == "RightColumn" {
-            let couponData = self.coupons[row]
+        if tableColumn!.identifier == "RightColumn"{
+            
+            let couponData = self.couponsRight[row]
             cellView.imageView!.image = couponData.couponImage
             cellView.textField!.stringValue = couponData.couponTitle!
             return cellView
