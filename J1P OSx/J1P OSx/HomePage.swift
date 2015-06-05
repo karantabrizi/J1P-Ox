@@ -18,6 +18,9 @@ class HomePage: NSViewController {
     var couponsRight = [CouponData]()
     
     
+    @IBAction func firstPageButton(sender: NSButton) {
+        println("hello")
+    }
     
     func createCoupons() {
         
@@ -48,9 +51,6 @@ extension HomePage: NSTableViewDataSource {
         return self.couponsLeft.count
     }
     
-    @IBAction func TestButton(sender: NSButton) {
-        println("hello")
-    }
 // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         

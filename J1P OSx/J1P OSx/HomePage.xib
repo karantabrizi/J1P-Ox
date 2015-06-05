@@ -19,6 +19,33 @@
                     <rect key="frame" x="-10" y="120" width="980" height="540"/>
                     <color key="color" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-ZH-GUT">
+                    <rect key="frame" x="0.0" y="0.0" width="960" height="122"/>
+                    <subviews>
+                        <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-kI-GRz">
+                            <rect key="frame" x="-10" y="0.0" width="980" height="130"/>
+                            <color key="color" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                        </colorWell>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BqV-MP-xs6">
+                            <rect key="frame" x="0.0" y="30" width="500" height="100"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jcpenney" id="AjX-QD-1oS"/>
+                        </imageView>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6F-uC-pEZ" userLabel="searchButton">
+                            <rect key="frame" x="828" y="20" width="120" height="120"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="UVO-TH-GzK">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system" size="10"/>
+                            </buttonCell>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-oN-Sxy" userLabel="homeButton">
+                            <rect key="frame" x="699" y="20" width="100" height="120"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="home" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="z9y-5K-Gqn">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system" size="10"/>
+                            </buttonCell>
+                        </button>
+                    </subviews>
+                </customView>
                 <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" borderType="none" autohidesScrollers="YES" horizontalLineScroll="222" horizontalPageScroll="10" verticalLineScroll="222" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
                     <rect key="frame" x="0.0" y="130" width="960" height="440"/>
                     <clipView key="contentView" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" id="xKz-ER-LhL">
@@ -26,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="220" rowSizeStyle="automatic" viewBased="YES" id="EDb-1z-iBb">
-                                <rect key="frame" x="0.0" y="0.0" width="1486" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="966" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -61,14 +88,14 @@
                                                         <rect key="frame" x="0.0" y="35" width="480" height="160"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="lbj-b0-M3U"/>
                                                     </imageView>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-z3-h4T">
-                                                        <rect key="frame" x="-2" y="0.0" width="476" height="225"/>
-                                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="7QR-TC-Go0">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umd-59-pT8">
+                                                        <rect key="frame" x="0.0" y="-1" width="480" height="222"/>
+                                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="bhC-zC-b7t">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="system" size="10"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="TestButton:" target="-2" id="AeE-99-z0M"/>
+                                                            <action selector="firstPageButton:" target="-2" id="HjT-Z1-vLB"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -114,6 +141,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system" size="10"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="firstPageButton:" target="-2" id="wtF-6n-h4v"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <connections>
@@ -141,35 +171,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-ZH-GUT">
-                    <rect key="frame" x="0.0" y="0.0" width="960" height="122"/>
-                    <subviews>
-                        <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-kI-GRz">
-                            <rect key="frame" x="-10" y="0.0" width="980" height="130"/>
-                            <color key="color" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-                        </colorWell>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BqV-MP-xs6">
-                            <rect key="frame" x="0.0" y="30" width="500" height="100"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="jcpenney" id="AjX-QD-1oS"/>
-                        </imageView>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6F-uC-pEZ" userLabel="searchButton">
-                            <rect key="frame" x="828" y="20" width="120" height="120"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="UVO-TH-GzK">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="10"/>
-                            </buttonCell>
-                        </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-oN-Sxy" userLabel="homeButton">
-                            <rect key="frame" x="699" y="20" width="100" height="120"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="home" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="z9y-5K-Gqn">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="10"/>
-                            </buttonCell>
-                        </button>
-                    </subviews>
-                </customView>
             </subviews>
-            <point key="canvasLocation" x="559" y="292"/>
+            <point key="canvasLocation" x="516" y="230"/>
         </customView>
     </objects>
     <resources>
