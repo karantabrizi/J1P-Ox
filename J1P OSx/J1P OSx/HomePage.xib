@@ -46,11 +46,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="6sY-XU-7wq">
-                                                <rect key="frame" x="1" y="1" width="370" height="160"/>
+                                                <rect key="frame" x="1" y="1" width="480" height="220"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-8G-6rU">
-                                                        <rect key="frame" x="188" y="143" width="105" height="17"/>
+                                                        <rect key="frame" x="188" y="203" width="105" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="BNG-r3-bxh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -58,11 +58,11 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-gh-m4c">
-                                                        <rect key="frame" x="55" y="-25" width="370" height="160"/>
+                                                        <rect key="frame" x="0.0" y="35" width="480" height="160"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="lbj-b0-M3U"/>
                                                     </imageView>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-z3-h4T">
-                                                        <rect key="frame" x="53" y="-28" width="374" height="165"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="476" height="225"/>
                                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="7QR-TC-Go0">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -106,7 +106,7 @@
                                                     </textField>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-g5-TuQ">
                                                         <rect key="frame" x="0.0" y="35" width="480" height="160"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="sPK-aU-EMy"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="sPK-aU-EMy"/>
                                                     </imageView>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZ2-V2-7eJ">
                                                         <rect key="frame" x="-2" y="0.0" width="484" height="222"/>
@@ -161,7 +161,7 @@
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-oN-Sxy" userLabel="homeButton">
                             <rect key="frame" x="699" y="20" width="100" height="120"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="home" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="z9y-5K-Gqn">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="home" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="z9y-5K-Gqn">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
