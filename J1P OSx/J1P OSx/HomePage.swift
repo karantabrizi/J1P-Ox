@@ -35,6 +35,9 @@ extension HomePage: NSTableViewDataSource {
         return self.coupons.count
     }
     
+    @IBAction func TestButton(sender: NSButton) {
+        println("Hello")
+    }
 // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         

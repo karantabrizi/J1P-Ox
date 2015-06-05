@@ -15,13 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="960" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" autohidesScrollers="YES" horizontalLineScroll="227" horizontalPageScroll="10" verticalLineScroll="227" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
+                <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" autohidesScrollers="YES" horizontalLineScroll="222" horizontalPageScroll="10" verticalLineScroll="222" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
                     <rect key="frame" x="0.0" y="130" width="960" height="440"/>
                     <clipView key="contentView" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" id="xKz-ER-LhL">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="225" rowSizeStyle="automatic" viewBased="YES" id="EDb-1z-iBb">
+                            <tableView verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="220" rowSizeStyle="automatic" viewBased="YES" id="EDb-1z-iBb">
                                 <rect key="frame" x="0.0" y="0.0" width="485" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -57,6 +57,16 @@
                                                         <rect key="frame" x="0.0" y="35" width="480" height="160"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="lbj-b0-M3U"/>
                                                     </imageView>
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0F-z3-h4T">
+                                                        <rect key="frame" x="-2" y="0.0" width="476" height="225"/>
+                                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="7QR-TC-Go0">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="TestButton:" target="-2" id="AeE-99-z0M"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <connections>
                                                     <outlet property="imageView" destination="v5v-gh-m4c" id="1P2-KI-ago"/>
@@ -65,39 +75,46 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="RightColumn" width="480" minWidth="40" maxWidth="1000" id="0gG-Av-rfa">
+                                    <tableColumn identifier="RightColumn" width="1000" minWidth="40" maxWidth="1000" id="gnE-cy-Y79">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="lVE-xH-drY">
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ccj-w6-Gu6">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="GWp-xZ-UHF">
-                                                <rect key="frame" x="1" y="1" width="480" height="220"/>
+                                            <tableCellView id="FB2-oG-VwP">
+                                                <rect key="frame" x="484" y="1" width="1000" height="220"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFl-ia-iZO">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rg9-LD-aBn">
                                                         <rect key="frame" x="188" y="203" width="105" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="fy6-6V-2xN">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Afc-Id-RLJ">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GcS-v0-pF5">
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-g5-TuQ">
                                                         <rect key="frame" x="0.0" y="35" width="480" height="160"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="rTD-Zg-mre"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="sPK-aU-EMy"/>
                                                     </imageView>
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZ2-V2-7eJ">
+                                                        <rect key="frame" x="-2" y="0.0" width="484" height="222"/>
+                                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mNg-bi-1C4">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system" size="10"/>
+                                                        </buttonCell>
+                                                    </button>
                                                 </subviews>
                                                 <connections>
-                                                    <outlet property="imageView" destination="GcS-v0-pF5" id="nyB-Yf-zdT"/>
-                                                    <outlet property="textField" destination="CFl-ia-iZO" id="lRL-gc-Czs"/>
+                                                    <outlet property="imageView" destination="ubX-g5-TuQ" id="dvN-NW-Hkl"/>
+                                                    <outlet property="textField" destination="rg9-LD-aBn" id="FKQ-bx-Ypd"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
