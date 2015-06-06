@@ -172,7 +172,7 @@
                     </scroller>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="516" y="230"/>
+            <point key="canvasLocation" x="496" y="337"/>
         </customView>
     </objects>
     <resources>

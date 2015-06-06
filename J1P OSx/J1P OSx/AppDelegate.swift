@@ -20,7 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView.addSubview(homePage.view)
         homePage.view.frame = (window.contentView as! NSView).bounds
     }
-
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
