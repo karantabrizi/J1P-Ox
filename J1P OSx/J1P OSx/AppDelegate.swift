@@ -11,18 +11,28 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var homePage: HomePage!
+    var detailsPage: DetailsPage!
     @IBOutlet weak var window: NSWindow!
-
-
+    
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        
+        detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
+        detailsPage.createCoupons()
+        window.contentView.addSubview(detailsPage.view)
+        detailsPage.view.frame = (window.contentView as! NSView).bounds
+        
         homePage = HomePage(nibName: "HomePage", bundle: nil)
         homePage.createCoupons()
         window.contentView.addSubview(homePage.view)
         homePage.view.frame = (window.contentView as! NSView).bounds
+        
+        }
     }
+    
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+
     
 }
-

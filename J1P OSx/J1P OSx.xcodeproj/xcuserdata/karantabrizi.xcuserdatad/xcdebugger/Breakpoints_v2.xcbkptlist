@@ -2,4 +2,129 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DetailsPage.swift"
+            timestampString = "455590073.22584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "DetailsPage"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "J1P_OSx.DetailsPage.detailsTableView.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSTableView&gt;"
+                  moduleName = "J1P OSx"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karantabrizi/Desktop/projects/JCP/JCP-OSx/J1P%20OSx/DetailsPage.swift"
+                  timestampString = "455590073.233723"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "J1P_OSx.DetailsPage.detailsTableView.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSTableView&gt;"
+                  moduleName = "J1P OSx"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karantabrizi/Desktop/projects/JCP/JCP-OSx/J1P%20OSx/DetailsPage.swift"
+                  timestampString = "455590073.233922"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "J1P_OSx.DetailsPage.detailsTableView.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSTableView&gt;"
+                  moduleName = "J1P OSx"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karantabrizi/Desktop/projects/JCP/JCP-OSx/J1P%20OSx/DetailsPage.swift"
+                  timestampString = "455590073.234082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "J1P_OSx.DetailsPage.init (J1P_OSx.DetailsPage.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Swift.Optional&lt;J1P_OSx.DetailsPage&gt;"
+                  moduleName = "J1P OSx"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karantabrizi/Desktop/projects/JCP/JCP-OSx/J1P%20OSx/DetailsPage.swift"
+                  timestampString = "455590073.234237"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "J1P_OSx.DetailsPage.init (J1P_OSx.DetailsPage.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;J1P_OSx.DetailsPage&gt;"
+                  moduleName = "J1P OSx"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/karantabrizi/Desktop/projects/JCP/JCP-OSx/J1P%20OSx/DetailsPage.swift"
+                  timestampString = "455590073.234391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DetailsPage.swift"
+            timestampString = "455590073.258904"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DetailsPage.swift"
+            timestampString = "455590073.261774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "DetailsPage"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

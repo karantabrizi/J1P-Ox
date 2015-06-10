@@ -12,7 +12,7 @@ import AppKit
 class CouponData: NSObject {
     var couponID: Int?
     var couponTitle: String?
-    var couponCode: String?
+    var couponExpiration: String?
     var couponDiscount: Int?
     var couponImage: NSImage?
     
@@ -27,7 +27,7 @@ class CouponData: NSObject {
     init( couponID: Int?, couponTitle: String?, couponCode: String?, couponDiscount: Int?, couponImage: NSImage?){
     self.couponID = couponID
     self.couponTitle = couponTitle
-    self.couponCode = couponCode
+    self.couponExpiration = couponCode
     self.couponDiscount = couponDiscount
     self.couponImage = couponImage
     }

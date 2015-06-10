@@ -119,12 +119,12 @@
 		C0D7C38A1B21012E0092BB75 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C044EC571B22625000FF93A7 /* DetailsPage.swift */,
-				C044EC581B22625000FF93A7 /* DetailsPage.xib */,
+				C0D7C36F1B20F8C60092BB75 /* MainMenu.xib */,
 				C0D7C36B1B20F8C60092BB75 /* AppDelegate.swift */,
 				C0D7C3861B20FA0B0092BB75 /* HomePage.swift */,
-				C0D7C36F1B20F8C60092BB75 /* MainMenu.xib */,
 				C0D7C3871B20FA0B0092BB75 /* HomePage.xib */,
+				C044EC571B22625000FF93A7 /* DetailsPage.swift */,
+				C044EC581B22625000FF93A7 /* DetailsPage.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";

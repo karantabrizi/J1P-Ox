@@ -6,20 +6,20 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HomePage" customModule="J1P_OSx" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="O5r-SW-DSp"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="540" id="Hz6-mo-xeY">
+        <customView identifier="homePageView" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="960" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QK-pK-BF7">
-                    <rect key="frame" x="-10" y="120" width="980" height="540"/>
+                <colorWell fixedFrame="YES" placeholderIntrinsicWidth="980" placeholderIntrinsicHeight="540" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QK-pK-BF7">
+                    <rect key="frame" x="-10" y="15" width="980" height="540"/>
                     <color key="color" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-ZH-GUT">
+                <customView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="122" translatesAutoresizingMaskIntoConstraints="NO" id="TNI-ZH-GUT" userLabel="StickyArea">
                     <rect key="frame" x="0.0" y="0.0" width="960" height="122"/>
                     <subviews>
                         <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7Z-kI-GRz">
@@ -32,13 +32,13 @@
                         </imageView>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6F-uC-pEZ" userLabel="searchButton">
                             <rect key="frame" x="828" y="20" width="120" height="120"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="search" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="UVO-TH-GzK">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="search" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="UVO-TH-GzK">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-oN-Sxy" userLabel="homeButton">
-                            <rect key="frame" x="699" y="20" width="100" height="120"/>
+                            <rect key="frame" x="700" y="20" width="100" height="120"/>
                             <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="home" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="z9y-5K-Gqn">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
@@ -59,7 +59,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="LeftColumn" width="480" minWidth="40" maxWidth="1000" id="Gdu-L5-9BE">
+                                    <tableColumn identifier="LeftColumn" editable="NO" width="480" minWidth="40" maxWidth="1000" id="Gdu-L5-9BE">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -95,7 +95,7 @@
                                                             <font key="font" metaFont="system" size="10"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="firstPageButton:" target="-2" id="HjT-Z1-vLB"/>
+                                                            <action selector="hideThisView:" target="-2" id="1Bk-wG-awL"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -106,7 +106,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="RightColumn" width="480" minWidth="40" maxWidth="1000" id="gnE-cy-Y79">
+                                    <tableColumn identifier="RightColumn" editable="NO" width="480" minWidth="40" maxWidth="1000" id="gnE-cy-Y79">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -155,8 +155,8 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
-                                    <outlet property="dataSource" destination="-2" id="w0t-JP-ZcO"/>
-                                    <outlet property="delegate" destination="-2" id="BIX-KJ-nPi"/>
+                                    <outlet property="dataSource" destination="-2" id="yDh-JP-e2K"/>
+                                    <outlet property="delegate" destination="-2" id="nsa-8M-bJ4"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -172,7 +172,7 @@
                     </scroller>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="496" y="337"/>
+            <point key="canvasLocation" x="560" y="189"/>
         </customView>
     </objects>
     <resources>

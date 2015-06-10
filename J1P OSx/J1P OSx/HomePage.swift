@@ -9,11 +9,20 @@
 import Cocoa
 
 class HomePage: NSViewController {
-
+    
+    
+    @IBOutlet var myViewInsideContainerView: NSView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
+    
+    @IBAction func hideThisView(sender: NSButton) {
+        AppDelegate().hideContainerView()
+        println("kir")
+    }
+    
+    
     var couponsLeft = [CouponData]()
     var couponsRight = [CouponData]()
     

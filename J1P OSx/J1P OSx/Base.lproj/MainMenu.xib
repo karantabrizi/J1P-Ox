@@ -669,11 +669,11 @@
         <window title="J1P OSx" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="960" height="540"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <value key="minSize" type="size" width="960" height="540"/>
+            <rect key="contentRect" x="0.0" y="13" width="1800" height="1000"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <value key="minSize" type="size" width="1800" height="1000"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="960" height="540"/>
+                <rect key="frame" x="0.0" y="0.0" width="1800" height="1000"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
             <point key="canvasLocation" x="454" y="345"/>
