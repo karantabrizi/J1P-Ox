@@ -12,51 +12,27 @@ import AppKit
 class HomePage: NSViewController {
     
     @IBOutlet weak var tableView: NSTableView!
+    
+//    Trying to fix the column issue
     @IBOutlet weak var rightColumn: NSTableColumn!
     @IBAction func imageViewRight(sender: AnyObject) {
-        println("koon + \(tableView.selectedRow)")
+        println("image is taking action!")
     }
+
     //Sanity check for the coupon selection
-    func selectedCoupon() -> CouponData? {
+    func selectedCoupon() {
         let selectedCol = self.tableView.selectedColumn
         println("selectedCol \(selectedCol)")
         let selectedRow = self.tableView.selectedRow
-        println("selectedRow \(selectedRow)")
         if selectedRow >= 0 && selectedRow < self.couponsLeft.count {
-            //self.view.hidden = true
-            return self.couponsLeft[selectedRow]
+
+            AppDelegate.globalValues.homePageSelection = selectedRow
         }
-        return nil
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func hideThisView(sender: NSButton) {
-        selectedCoupon()
-        println("kir")
-        }
-    @IBAction func txtdfield(sender: AnyObject) {
-        println("dastekhar")
-    }
-    @IBAction func awflkaslfk(sender: NSImageView) {
-        let buttonTitle = self.title;
-        
-        println(buttonTitle)
-        
-        
-        println("kir2")
-    }
-    @IBAction func qwraf(sender: AnyObject) {
-    }
-    
-        @IBAction func firstPageButton(sender: NSButton) {
-            println("hello")
-        }
-    
     
     var couponsLeft = [CouponData]()
     var couponsRight = [CouponData]()
@@ -79,9 +55,7 @@ class HomePage: NSViewController {
         // Preventing Errors if the columns are not the same size by repeating the last coupon
         if couponsLeft.count != couponsRight.count
         { couponsRight.append(couponsLeft.last!)}
-
-        
-        }
+}
     
 }
 // Give the table number of rows
@@ -111,13 +85,18 @@ extension HomePage: NSTableViewDataSource {
         
         return cellView
     }
+    
+    func tableView(tableView: NSTableView, shouldSelectTableColumn tableColumn: NSTableColumn?) -> Bool {
+        return true
+    }
+    
 }
 
 // MARK: - NSTableViewDelegate
 extension HomePage: NSTableViewDelegate {
     func tableViewSelectionDidChange(notification: NSNotification) {
         selectedCoupon()
-        println(selectedCoupon()?.couponTitle)
-//        updateDetailInfo(selectedDoc)
+        self.view.hidden = true
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
     }
 }

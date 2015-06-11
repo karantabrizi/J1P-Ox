@@ -14,6 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var detailsPage: DetailsPage!
     @IBOutlet weak var window: NSWindow!
     
+    struct globalValues {
+        static var homePageSelection = 0
+    }
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
@@ -24,8 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         homePage = HomePage(nibName: "HomePage", bundle: nil)
         homePage.createCoupons()
         window.contentView.addSubview(homePage.view)
-        homePage.view.frame = (window.contentView as! NSView).bounds
-        
+        homePage.view.frame = (window.contentView as! NSView).bounds        
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

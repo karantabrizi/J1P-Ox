@@ -92,7 +92,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="print:" target="ff2-Bd-Wfi" id="So8-wB-rcx"/>
+                                <action selector="printButton:" target="-2" id="cZP-wt-279"/>
                             </connections>
                         </button>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fsv-mQ-PYs">

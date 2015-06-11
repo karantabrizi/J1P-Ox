@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-//import ApplicationServices
-
 
 class DetailsPage: NSViewController {
     //Linke the lables on the details page to the selected coupon
@@ -24,6 +22,11 @@ class DetailsPage: NSViewController {
             return self.couponsAll[selectedRow]
         }
         return nil
+    }
+    
+    //To initialze the table by the selection, times 2 since the array was devided into half
+    func selectedCoupon2() -> CouponData? {
+            return self.couponsAll[AppDelegate.globalValues.homePageSelection * 2]
     }
     
     //Initialize the Lables showing on the coupon details
@@ -44,16 +47,22 @@ class DetailsPage: NSViewController {
         self.couponDiscount.integerValue = Int(couponDiscount)
     }
     
+    //Set an observer to reload the table after selection on the home page
     override func viewDidLoad() {
-        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name:"refreshMyTableView", object: nil)
         // Do view setup here.
     }
+    func refreshList(notification: NSNotification){
+        detailsTableView.reloadData()
+
+    }
     
+    //initialize data set
     var couponsAll = [CouponData]()
     
     func createCoupons() {
         
-        let numberOfCoupons=4
+        let numberOfCoupons=6
         
         // Creating coupons and put them in two arrays for two columns
         for index in 1...numberOfCoupons {
@@ -65,29 +74,42 @@ class DetailsPage: NSViewController {
     
     }
     
+    @IBAction func printButton(sender: NSButton) {
+    let url = NSURL(string: "http://myrestservice")
+    let theRequest = NSURLRequest(URL: url!)
     
+    NSURLConnection.sendAsynchronousRequest(theRequest, queue: nil, completionHandler: {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+    if data.length > 0 && error == nil {
+    let response : AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil)
+    }
+    })}
 }
 // Give the table number of rows
 extension DetailsPage: NSTableViewDataSource {
     func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
         return self.couponsAll.count
     }
-
+    
+    
     // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         var cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
-    
+
+        
 //         Setting what each column does
 
+        let selectedDoc = selectedCoupon2()
+        updateDetailInfo(selectedDoc)
+        
         if tableColumn!.identifier == "DetailsColumn"{
         
             let couponData = self.couponsAll[row]
             cellView.textField!.stringValue = couponData.couponTitle!
             return cellView
         }
-        
         return cellView
+        
     }
 
 }
