@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import ApplicationServices
+//import ApplicationServices
 
 
 class DetailsPage: NSViewController {
@@ -98,7 +98,4 @@ extension DetailsPage: NSTableViewDelegate {
         let selectedDoc = selectedCoupon()
         updateDetailInfo(selectedDoc)
     }
-    
-    
 }
-

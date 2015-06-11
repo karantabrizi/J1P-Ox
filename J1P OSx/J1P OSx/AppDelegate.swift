@@ -14,7 +14,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var detailsPage: DetailsPage!
     @IBOutlet weak var window: NSWindow!
     
-    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
@@ -27,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView.addSubview(homePage.view)
         homePage.view.frame = (window.contentView as! NSView).bounds
         
-        }
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

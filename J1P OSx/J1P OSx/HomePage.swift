@@ -7,29 +7,59 @@
 //
 
 import Cocoa
+import AppKit
 
 class HomePage: NSViewController {
     
+    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var rightColumn: NSTableColumn!
+    @IBAction func imageViewRight(sender: AnyObject) {
+        println("koon + \(tableView.selectedRow)")
+    }
+    //Sanity check for the coupon selection
+    func selectedCoupon() -> CouponData? {
+        let selectedCol = self.tableView.selectedColumn
+        println("selectedCol \(selectedCol)")
+        let selectedRow = self.tableView.selectedRow
+        println("selectedRow \(selectedRow)")
+        if selectedRow >= 0 && selectedRow < self.couponsLeft.count {
+            //self.view.hidden = true
+            return self.couponsLeft[selectedRow]
+        }
+        return nil
+    }
     
-    @IBOutlet var myViewInsideContainerView: NSView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     @IBAction func hideThisView(sender: NSButton) {
-        AppDelegate().hideContainerView()
+        selectedCoupon()
         println("kir")
+        }
+    @IBAction func txtdfield(sender: AnyObject) {
+        println("dastekhar")
     }
+    @IBAction func awflkaslfk(sender: NSImageView) {
+        let buttonTitle = self.title;
+        
+        println(buttonTitle)
+        
+        
+        println("kir2")
+    }
+    @IBAction func qwraf(sender: AnyObject) {
+    }
+    
+        @IBAction func firstPageButton(sender: NSButton) {
+            println("hello")
+        }
     
     
     var couponsLeft = [CouponData]()
     var couponsRight = [CouponData]()
-    
-    
-    @IBAction func firstPageButton(sender: NSButton) {
-        println("hello")
-    }
     
     func createCoupons() {
         
@@ -62,11 +92,10 @@ extension HomePage: NSTableViewDataSource {
     
 // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
         var cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
-        
 // Setting what each column does
         if tableColumn!.identifier == "LeftColumn" {
+            
             let couponData = self.couponsLeft[row]
             cellView.imageView!.image = couponData.couponImage
             cellView.textField!.stringValue = couponData.couponTitle!
@@ -86,4 +115,9 @@ extension HomePage: NSTableViewDataSource {
 
 // MARK: - NSTableViewDelegate
 extension HomePage: NSTableViewDelegate {
+    func tableViewSelectionDidChange(notification: NSNotification) {
+        selectedCoupon()
+        println(selectedCoupon()?.couponTitle)
+//        updateDetailInfo(selectedDoc)
+    }
 }
