@@ -26,7 +26,7 @@ class DetailsPage: NSViewController {
     
     //To initialze the table by the selection, times 2 since the array was devided into half
     func selectedCoupon2() -> CouponData? {
-            return self.couponsAll[AppDelegate.globalValues.homePageSelection * 2]
+        return self.couponsAll[AppDelegate.globalValues.homePageSelection * 2]
     }
     
     //Initialize the Lables showing on the coupon details
@@ -40,6 +40,7 @@ class DetailsPage: NSViewController {
             couponTitle = CouponData.couponTitle!
             couponCode = CouponData.couponExpiration!
             couponDiscount = CouponData.couponDiscount!
+            AppDelegate.globalValues.toPrinter = couponTitle
         }
         
         self.couponTitle.stringValue = couponTitle
@@ -74,8 +75,13 @@ class DetailsPage: NSViewController {
     
     }
     
+    @IBAction func homeButton(sender: NSButton) {
+
+    }
+    
+    
     @IBAction func printButton(sender: NSButton) {
-    let url = NSURL(string: "http://myrestservice")
+    let url = NSURL(string: "http://localhost:8080/myapp/mycoupon/\(AppDelegate.globalValues.toPrinter)")
     let theRequest = NSURLRequest(URL: url!)
     
     NSURLConnection.sendAsynchronousRequest(theRequest, queue: nil, completionHandler: {(response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
@@ -98,9 +104,11 @@ extension DetailsPage: NSTableViewDataSource {
 
         
 //         Setting what each column does
-
-        let selectedDoc = selectedCoupon2()
-        updateDetailInfo(selectedDoc)
+        if AppDelegate.globalValues.homePageSelection != -1 {
+            let selectedDoc = selectedCoupon2()
+            updateDetailInfo(selectedDoc)
+            AppDelegate.globalValues.homePageSelection = -1
+        }
         
         if tableColumn!.identifier == "DetailsColumn"{
         

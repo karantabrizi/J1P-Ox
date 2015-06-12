@@ -15,7 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     struct globalValues {
-        static var homePageSelection = 0
+        static var homePageSelection = -1
+        static var toPrinter = "K"
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {

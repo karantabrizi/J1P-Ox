@@ -47,6 +47,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="homeButton:" target="-2" id="Ge2-tl-2c9"/>
+                            </connections>
                         </button>
                     </subviews>
                 </customView>
@@ -92,7 +95,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="printButton:" target="-2" id="cZP-wt-279"/>
+                                <action selector="printButton:" target="-2" id="3Lm-tk-bGS"/>
                             </connections>
                         </button>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fsv-mQ-PYs">
