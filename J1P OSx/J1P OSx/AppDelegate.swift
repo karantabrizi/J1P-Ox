@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     struct globalValues {
         static var homePageSelection = -1
         static var toPrinter = "K"
+        static var flagToHide = false
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {

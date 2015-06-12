@@ -115,7 +115,7 @@
                 </customView>
                 <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" borderType="none" autohidesScrollers="YES" horizontalLineScroll="77" horizontalPageScroll="10" verticalLineScroll="77" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUP-kc-g0M">
                     <rect key="frame" x="0.0" y="130" width="275" height="440"/>
-                    <clipView key="contentView" misplaced="YES" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" id="YMS-WL-Bur">
+                    <clipView key="contentView" misplaced="YES" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" copiesOnScroll="NO" id="YMS-WL-Bur">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -152,7 +152,7 @@
                                                         <imageCell key="cell" truncatesLastVisibleLine="YES" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="arrow" id="gcD-e6-awo"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MrV-9n-rst">
-                                                        <rect key="frame" x="78" y="-30" width="150" height="75"/>
+                                                        <rect key="frame" x="78" y="25" width="150" height="20"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" drawsBackground="YES" id="Zne-yy-rxx">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

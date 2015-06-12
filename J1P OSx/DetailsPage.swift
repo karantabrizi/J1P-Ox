@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AppKit
 
 class DetailsPage: NSViewController {
     //Linke the lables on the details page to the selected coupon
@@ -51,13 +52,11 @@ class DetailsPage: NSViewController {
     //Set an observer to reload the table after selection on the home page
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name:"refreshMyTableView", object: nil)
-        // Do view setup here.
     }
     func refreshList(notification: NSNotification){
         detailsTableView.reloadData()
-
     }
-    
+
     //initialize data set
     var couponsAll = [CouponData]()
     
@@ -75,11 +74,13 @@ class DetailsPage: NSViewController {
     
     }
     
+    //HomeButton function
     @IBAction func homeButton(sender: NSButton) {
-
+        AppDelegate.globalValues.flagToHide = false
+        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
     }
     
-    
+    //Print using webservice
     @IBAction func printButton(sender: NSButton) {
     let url = NSURL(string: "http://localhost:8080/myapp/mycoupon/\(AppDelegate.globalValues.toPrinter)")
     let theRequest = NSURLRequest(URL: url!)
@@ -103,19 +104,15 @@ extension DetailsPage: NSTableViewDataSource {
         var cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
 
         
-//         Setting what each column does
+//         To run the function only once
         if AppDelegate.globalValues.homePageSelection != -1 {
             let selectedDoc = selectedCoupon2()
             updateDetailInfo(selectedDoc)
             AppDelegate.globalValues.homePageSelection = -1
         }
         
-        if tableColumn!.identifier == "DetailsColumn"{
-        
             let couponData = self.couponsAll[row]
             cellView.textField!.stringValue = couponData.couponTitle!
-            return cellView
-        }
         return cellView
         
     }

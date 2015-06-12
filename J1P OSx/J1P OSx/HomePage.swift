@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AppKit
 
 class HomePage: NSViewController {
     
@@ -31,9 +30,15 @@ class HomePage: NSViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hidePage:", name:"hideHomePage", object: nil)
+    }
+    func hidePage(notification: NSNotification){
+        self.view.hidden = AppDelegate.globalValues.flagToHide
+        //to remove previous selection
+        tableView.reloadData()
     }
     
+    //Initializing coupon arrays 
     var couponsLeft = [CouponData]()
     var couponsRight = [CouponData]()
     
@@ -86,17 +91,14 @@ extension HomePage: NSTableViewDataSource {
         return cellView
     }
     
-    func tableView(tableView: NSTableView, shouldSelectTableColumn tableColumn: NSTableColumn?) -> Bool {
-        return true
-    }
-    
 }
 
 // MARK: - NSTableViewDelegate
 extension HomePage: NSTableViewDelegate {
     func tableViewSelectionDidChange(notification: NSNotification) {
         selectedCoupon()
-        self.view.hidden = true
+        AppDelegate.globalValues.flagToHide = true
+        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
     }
 }
