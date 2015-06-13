@@ -16,10 +16,12 @@ class DetailsPage: NSViewController {
     @IBOutlet weak var couponExpiration: NSTextField!
     @IBOutlet weak var couponDiscount: NSTextField!
     
+    var selectedRow = 0
     //Sanity check for the coupon selection
     func selectedCoupon() -> CouponData? {
-        let selectedRow = self.detailsTableView.selectedRow;
+        selectedRow = self.detailsTableView.selectedRow;
         if selectedRow >= 0 && selectedRow < self.couponsAll.count {
+            detailsTableView.reloadData()
             return self.couponsAll[selectedRow]
         }
         return nil
@@ -27,7 +29,7 @@ class DetailsPage: NSViewController {
     
     //To initialze the table by the selection, times 2 since the array was devided into half
     func selectedCoupon2() -> CouponData? {
-        return self.couponsAll[AppDelegate.globalValues.homePageSelection * 2]
+        return self.couponsAll[AppDelegate.globalValues.homePageSelection]
     }
     
     //Initialize the Lables showing on the coupon details
@@ -104,15 +106,23 @@ extension DetailsPage: NSTableViewDataSource {
         var cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
 
         
-//         To run the function only once
+        //To run the function only once
         if AppDelegate.globalValues.homePageSelection != -1 {
             let selectedDoc = selectedCoupon2()
             updateDetailInfo(selectedDoc)
+            selectedRow = AppDelegate.globalValues.homePageSelection * 2
             AppDelegate.globalValues.homePageSelection = -1
         }
         
+        //put the cells there edit the image based on selected/notselected
             let couponData = self.couponsAll[row]
             cellView.textField!.stringValue = couponData.couponTitle!
+            cellView.imageView!.image = NSImage(named: "scisor")
+        println(selectedRow)
+        if row == selectedRow {
+            cellView.imageView!.image = NSImage(named: "scisor_active")
+        }
+        
         return cellView
         
     }
