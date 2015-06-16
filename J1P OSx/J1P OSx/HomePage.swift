@@ -7,35 +7,49 @@
 //
 
 import Cocoa
+import AppKit
 
 class HomePage: NSViewController {
     
     @IBOutlet weak var tableView: NSTableView!
-    
-//    Trying to fix the column issue
-    @IBOutlet weak var rightColumn: NSTableColumn!
-    @IBAction func imageViewRight(sender: AnyObject) {
-        println("image is taking action!")
-    }
 
+    var selectedRow = -1
+    var selectedCol = -1
+    var leftColSel = 0
+    var rightColSel = 0
     //Sanity check for the coupon selection
     func selectedCoupon() {
-        let selectedCol = self.tableView.selectedColumn
-        println("selectedCol \(selectedCol)")
         let selectedRow = self.tableView.selectedRow
         if selectedRow >= 0 && selectedRow < self.couponsLeft.count {
-
-            AppDelegate.globalValues.homePageSelection = selectedRow
+            if leftColSel % 2 == 0 {
+            AppDelegate.globalValues.homePageSelection = selectedRow * 2 + 1
+            } else { AppDelegate.globalValues.homePageSelection = selectedRow * 2 }
         }
     }
     
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hidePage:", name:"hideHomePage", object: nil)
+        AppDelegate.globalValues.flagToHideSearch = true
+        AppDelegate.globalValues.flagToHideDetails = true
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
+        
+//                var box = ("<div>Testing<br></div><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/4/11/1397210130748/Spring-Lamb.-Image-shot-2-011.jpg'>".html2String)
     }
     func hidePage(notification: NSNotification){
-        self.view.hidden = AppDelegate.globalValues.flagToHide
+        self.view.hidden = AppDelegate.globalValues.flagToHideHome
         //to remove previous selection
         tableView.reloadData()
+    }
+    
+    //SearchButton Function
+    @IBAction func searchButton(sender: NSButton) {
+        AppDelegate.globalValues.flagToHideHome = true
+        AppDelegate.globalValues.flagToHideSearch = false
+        AppDelegate.globalValues.flagToHideDetails = true
+        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
     }
     
     //Initializing coupon arrays 
@@ -87,18 +101,31 @@ extension HomePage: NSTableViewDataSource {
             cellView.textField!.stringValue = couponData.couponTitle!
             return cellView
         }
-        
+        selectedRow = -1
         return cellView
     }
-    
+    @IBAction func leftColumnCheck(sender: NSButton) {
+        leftColSel += 1
+        println("left is \(leftColSel)")
+    }
+    @IBAction func rightColumnCheck(sender: NSButton) {
+        rightColSel += 1
+        println("right is \(rightColSel)")
+    }
+
 }
 
 // MARK: - NSTableViewDelegate
 extension HomePage: NSTableViewDelegate {
-    func tableViewSelectionDidChange(notification: NSNotification) {
-        selectedCoupon()
-        AppDelegate.globalValues.flagToHide = true
-        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+        func tableViewSelectionDidChange(notification: NSNotification) {
+            if (leftColSel + rightColSel) % 2 == 1 {
+                selectedCoupon()
+                AppDelegate.globalValues.flagToHideHome = true
+                AppDelegate.globalValues.flagToHideSearch = true
+                AppDelegate.globalValues.flagToHideDetails = false
+                NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
+            }
     }
 }

@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HomePage" customModule="J1P_OSx" customModuleProvider="target">
             <connections>
-                <outlet property="rightColumn" destination="gnE-cy-Y79" id="yNF-fr-ruT"/>
                 <outlet property="tableView" destination="EDb-1z-iBb" id="8bL-AQ-rst"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="O5r-SW-DSp"/>
             </connections>
@@ -38,6 +37,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="searchButton:" target="-2" id="w5z-Eg-K9s"/>
+                            </connections>
                         </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eC-oN-Sxy" userLabel="homeButton">
                             <rect key="frame" x="700" y="20" width="100" height="120"/>
@@ -48,21 +50,40 @@
                         </button>
                     </subviews>
                 </customView>
-                <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" borderType="none" autohidesScrollers="YES" horizontalLineScroll="222" horizontalPageScroll="10" verticalLineScroll="222" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
-                    <rect key="frame" x="1" y="130" width="960" height="440"/>
-                    <clipView key="contentView" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" drawsBackground="NO" copiesOnScroll="NO" id="xKz-ER-LhL">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-wc-BMr">
+                    <rect key="frame" x="160" y="122" width="160" height="32"/>
+                    <buttonCell key="cell" type="push" title="Select This Column" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Xf4-lA-XGS">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="leftColumnCheck:" target="-2" id="A26-me-xgk"/>
+                    </connections>
+                </button>
+                <button focusRingType="exterior" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbI-cv-7nh">
+                    <rect key="frame" x="640" y="122" width="160" height="32"/>
+                    <buttonCell key="cell" type="push" title="Select This Column" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="exterior" inset="2" id="pHy-7X-Evy">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="rightColumnCheck:" target="-2" id="LKT-iw-d2c"/>
+                    </connections>
+                </button>
+                <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" borderType="none" autohidesScrollers="YES" horizontalLineScroll="222" horizontalPageScroll="10" verticalLineScroll="222" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
+                    <rect key="frame" x="0.0" y="150" width="960" height="420"/>
+                    <clipView key="contentView" misplaced="YES" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" drawsBackground="NO" copiesOnScroll="NO" id="xKz-ER-LhL">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="220" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="EDb-1z-iBb">
-                                <rect key="frame" x="0.0" y="0.0" width="958" height="0.0"/>
+                            <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" selectionHighlightStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" typeSelect="NO" rowHeight="220" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="EDb-1z-iBb">
+                                <rect key="frame" x="0.0" y="0.0" width="956" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <tableViewGridLines key="gridStyleMask" vertical="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="LeftColumn" editable="NO" width="475" minWidth="40" maxWidth="1000" id="Gdu-L5-9BE">
+                                    <tableColumn identifier="LeftColumn" editable="NO" width="474" minWidth="40" maxWidth="1000" id="Gdu-L5-9BE">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -76,7 +97,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="6sY-XU-7wq">
-                                                <rect key="frame" x="1" y="1" width="475" height="220"/>
+                                                <rect key="frame" x="1" y="1" width="474" height="220"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6B-8G-6rU">
@@ -99,7 +120,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="RightColumn" editable="NO" width="475" minWidth="40" maxWidth="1000" id="gnE-cy-Y79">
+                                    <tableColumn identifier="RightColumn" editable="NO" width="480" minWidth="40" maxWidth="1000" id="gnE-cy-Y79">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -113,7 +134,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="FB2-oG-VwP">
-                                                <rect key="frame" x="479" y="1" width="475" height="220"/>
+                                                <rect key="frame" x="479" y="1" width="480" height="220"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rg9-LD-aBn">
@@ -127,9 +148,6 @@
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-g5-TuQ">
                                                         <rect key="frame" x="0.0" y="35" width="480" height="160"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="sPK-aU-EMy"/>
-                                                        <connections>
-                                                            <action selector="imageViewRight:" target="-2" id="ZJC-cR-7IT"/>
-                                                        </connections>
                                                     </imageView>
                                                 </subviews>
                                                 <connections>
@@ -146,7 +164,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <nil key="backgroundColor"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="jeb-BZ-jnw">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>

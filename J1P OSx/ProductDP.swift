@@ -10,6 +10,12 @@ import Cocoa
 import AppKit
 import Foundation
 
+//extension String {
+//    var html2String:String {
+//        return NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!.string
+//    }
+//}
+
 class ProductDP: NSViewController {
     
     @IBOutlet weak var productTable: NSTableView!
@@ -22,11 +28,14 @@ class ProductDP: NSViewController {
     @IBOutlet weak var productPrice: NSTextField!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideSearch:", name:"hideMySearch", object: nil)
+    }
+    func hideSearch(notification: NSNotification){
+        self.view.hidden = AppDelegate.globalValues.flagToHideSearch
+        productTable.reloadData()
     }
     
-    var selectedRow = 0
+    var selectedRow = -1
     func selectedProduct() -> ProductsData? {
         selectedRow = self.productTable.selectedRow;
         if selectedRow >= 0 && selectedRow < self.sampleProducts.count {
@@ -78,12 +87,13 @@ class ProductDP: NSViewController {
 //    var workingArray = sampleProducts
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
+        
         var keyWord = searchedWord.title
-        if count(keyWord) > 1 {
             finalArray = [0]
-            
             createProducts()
+        
             for product in sampleProducts {
+                if keyWord == "" {break}
                 //optimize by removing products that are already in
                 //loop to find the word in each string
                 while 1<count(product.productName!) {
@@ -94,7 +104,7 @@ class ProductDP: NSViewController {
                     else {product.productName!.removeAtIndex(product.productName!.endIndex.predecessor())}
 //                  }
                     }
-                }
+            
             //creating the table array
         createProducts()
         var workingArray = sampleProducts
@@ -106,11 +116,19 @@ class ProductDP: NSViewController {
                 }
             }
         }
-        
         productTable.reloadData()
         }
+        }
+    //HomeButton function
+    @IBAction func homeButton(sender: NSButton) {
+        AppDelegate.globalValues.flagToHideHome = false
+        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
+        AppDelegate.globalValues.flagToHideSearch = true
     }
 }
+
+
+
 
 // Give the table number of rows
 extension ProductDP: NSTableViewDataSource {
@@ -129,10 +147,9 @@ extension ProductDP: NSTableViewDataSource {
         cellView.imageView!.image = productsData.productImage
         if row == selectedRow {
             cellView.textField!.stringValue = "SELECTED"
+            selectedRow = -1
         }
-        
         return cellView
-        
     }
 }
 

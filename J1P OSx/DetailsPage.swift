@@ -16,7 +16,7 @@ class DetailsPage: NSViewController {
     @IBOutlet weak var couponExpiration: NSTextField!
     @IBOutlet weak var couponDiscount: NSTextField!
     
-    var selectedRow = 0
+    var selectedRow = -1
     //Sanity check for the coupon selection
     func selectedCoupon() -> CouponData? {
         selectedRow = self.detailsTableView.selectedRow;
@@ -56,6 +56,7 @@ class DetailsPage: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name:"refreshMyTableView", object: nil)
     }
     func refreshList(notification: NSNotification){
+        self.view.hidden = AppDelegate.globalValues.flagToHideDetails
         detailsTableView.reloadData()
     }
 
@@ -78,9 +79,25 @@ class DetailsPage: NSViewController {
     
     //HomeButton function
     @IBAction func homeButton(sender: NSButton) {
-        AppDelegate.globalValues.flagToHide = false
+        AppDelegate.globalValues.flagToHideHome = false
+        AppDelegate.globalValues.flagToHideSearch = true
+        AppDelegate.globalValues.flagToHideDetails = true
         NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
     }
+    
+    //SearchButton Function
+    @IBAction func searchButton(sender: NSButton) {
+        AppDelegate.globalValues.flagToHideHome = true
+        AppDelegate.globalValues.flagToHideSearch = false
+        AppDelegate.globalValues.flagToHideDetails = true
+        NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
+    }
+    
+    
     
     //Print using webservice
     @IBAction func printButton(sender: NSButton) {
@@ -110,7 +127,7 @@ extension DetailsPage: NSTableViewDataSource {
         if AppDelegate.globalValues.homePageSelection != -1 {
             let selectedDoc = selectedCoupon2()
             updateDetailInfo(selectedDoc)
-            selectedRow = AppDelegate.globalValues.homePageSelection * 2
+            selectedRow = AppDelegate.globalValues.homePageSelection
             AppDelegate.globalValues.homePageSelection = -1
         }
         
