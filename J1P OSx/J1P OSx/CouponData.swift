@@ -16,14 +16,6 @@ class CouponData: NSObject {
     var couponDiscount: Int?
     var couponImage: NSImage?
     
-//    override init(){
-//        self.couponID = nil
-//        self.couponTitle = String()
-//        self.couponCode = String()
-//        self.couponDiscount = nil
-//        self.couponImage = NSImage()
-//    }
-    
     init( couponID: Int?, couponTitle: String?, couponCode: String?, couponDiscount: Int?, couponImage: NSImage?){
     self.couponID = couponID
     self.couponTitle = couponTitle

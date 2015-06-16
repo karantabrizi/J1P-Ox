@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     var homePage: HomePage!
     var detailsPage: DetailsPage!
+    var productDP : ProductDP!
     @IBOutlet weak var window: NSWindow!
     
     struct globalValues {
@@ -22,15 +23,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
-        detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
-        detailsPage.createCoupons()
-        window.contentView.addSubview(detailsPage.view)
-        detailsPage.view.frame = (window.contentView as! NSView).bounds
+        productDP = ProductDP(nibName: "ProductDP", bundle: nil)
+        productDP.createProducts()
+        window.contentView.addSubview(productDP.view)
+        productDP.view.frame = (window.contentView as! NSView).bounds
         
-        homePage = HomePage(nibName: "HomePage", bundle: nil)
-        homePage.createCoupons()
-        window.contentView.addSubview(homePage.view)
-        homePage.view.frame = (window.contentView as! NSView).bounds        
+//        detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
+//        detailsPage.createCoupons()
+//        window.contentView.addSubview(detailsPage.view)
+//        detailsPage.view.frame = (window.contentView as! NSView).bounds
+//        
+//        homePage = HomePage(nibName: "HomePage", bundle: nil)
+//        homePage.createCoupons()
+//        window.contentView.addSubview(homePage.view)
+//        homePage.view.frame = (window.contentView as! NSView).bounds
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

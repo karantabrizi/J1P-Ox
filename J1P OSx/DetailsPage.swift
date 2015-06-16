@@ -37,7 +37,7 @@ class DetailsPage: NSViewController {
         var couponTitle = ""
         var couponCode = ""
         var couponDiscount = 0
-        var couponTermsConditions = ""
+//        var couponTermsConditions = ""
         
         if let CouponData = doc {
             couponTitle = CouponData.couponTitle!

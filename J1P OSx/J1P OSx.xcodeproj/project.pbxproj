@@ -16,6 +16,10 @@
 		C0D7C3881B20FA0B0092BB75 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7C3861B20FA0B0092BB75 /* HomePage.swift */; };
 		C0D7C3891B20FA0B0092BB75 /* HomePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D7C3871B20FA0B0092BB75 /* HomePage.xib */; };
 		C0D7C38D1B21016D0092BB75 /* CouponData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7C38C1B21016D0092BB75 /* CouponData.swift */; };
+		C0E5D4901B2F182E0064BFF9 /* ProductDP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D48E1B2F182E0064BFF9 /* ProductDP.swift */; };
+		C0E5D4911B2F182E0064BFF9 /* ProductDP.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0E5D48F1B2F182E0064BFF9 /* ProductDP.xib */; };
+		C0E5D4931B2F1B050064BFF9 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */; };
+		C0E5D49D1B2F51350064BFF9 /* ProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,10 @@
 		C0D7C3861B20FA0B0092BB75 /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		C0D7C3871B20FA0B0092BB75 /* HomePage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePage.xib; sourceTree = "<group>"; };
 		C0D7C38C1B21016D0092BB75 /* CouponData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponData.swift; sourceTree = "<group>"; };
+		C0E5D48E1B2F182E0064BFF9 /* ProductDP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDP.swift; path = ../ProductDP.swift; sourceTree = "<group>"; };
+		C0E5D48F1B2F182E0064BFF9 /* ProductDP.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductDP.xib; path = ../ProductDP.xib; sourceTree = "<group>"; };
+		C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsData.swift; sourceTree = "<group>"; };
+		C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductCollectionView.swift; path = ../ProductCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				C0D7C36F1B20F8C60092BB75 /* MainMenu.xib */,
+				C0E5D48E1B2F182E0064BFF9 /* ProductDP.swift */,
+				C0E5D48F1B2F182E0064BFF9 /* ProductDP.xib */,
 				C0D7C36B1B20F8C60092BB75 /* AppDelegate.swift */,
 				C0D7C3861B20FA0B0092BB75 /* HomePage.swift */,
 				C0D7C3871B20FA0B0092BB75 /* HomePage.xib */,
@@ -133,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				C0D7C38C1B21016D0092BB75 /* CouponData.swift */,
+				C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */,
+				C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -221,6 +233,7 @@
 				C0D7C36E1B20F8C60092BB75 /* Images.xcassets in Resources */,
 				C0D7C3711B20F8C60092BB75 /* MainMenu.xib in Resources */,
 				C044EC5A1B22625000FF93A7 /* DetailsPage.xib in Resources */,
+				C0E5D4911B2F182E0064BFF9 /* ProductDP.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,9 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E5D4931B2F1B050064BFF9 /* ProductsData.swift in Sources */,
 				C0D7C38D1B21016D0092BB75 /* CouponData.swift in Sources */,
 				C0D7C36C1B20F8C60092BB75 /* AppDelegate.swift in Sources */,
 				C0D7C3881B20FA0B0092BB75 /* HomePage.swift in Sources */,
+				C0E5D4901B2F182E0064BFF9 /* ProductDP.swift in Sources */,
+				C0E5D49D1B2F51350064BFF9 /* ProductCollectionView.swift in Sources */,
 				C044EC591B22625000FF93A7 /* DetailsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
