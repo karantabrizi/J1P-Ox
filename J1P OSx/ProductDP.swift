@@ -10,13 +10,11 @@ import Cocoa
 import AppKit
 import Foundation
 
-//extension String {
-//    var html2String:String {
-//        return NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil, error: nil)!.string
-//    }
-//}
-
 class ProductDP: NSViewController {
+    
+    var box = ("<p>Outfit your bathroom with soft new carpet from this rug collection featuring a nonskid latex back.</p>\r\n<ul>\r\n\t<li>\r\n\t\tvibrant, lasting color&mdash;wash after wash</li>\r\n\t<li>\r\n\t\tstain resistant</li>\r\n\t<li>\r\n\t\tultra soft</li>\r\n\t<li>\r\n\t\tcoordinates with Signature Soft Solid and Damask towels</li>\r\n</ul>\r\n<p>Nylon. Washable. Made in America.</p>\r\n<ul>\r\n\t<li>\r\n\t\tOblong rugs: available in 17x24&rdquo;, 20x34&rdquo;, 24x40&quot;, 30x50&quot; and 20x60&quot;</li>\r\n\t<li>\r\n\t\tContour rug (fits around toilet base): 20x24&quot;</li>\r\n\t<li>\r\n\t\tStandard Lid Cover: 17x19&quot;</li>\r\n\t<li>\r\n\t\tElongated Lid Cover: 17x21&quot;</li>\r\n\t<li>\r\n\t\tTank set: 13x27&quot; and 15x39&quot;</li>\r\n\t<li>\r\n\t\tCarpets: 60x72&quot; and 72x120&quot;</li>\r\n</ul>\r\n<p>Note:&nbsp;60x72&quot; is a 5x6&#39; carpet and 72x120&quot; is a 6x10&#39; carpet. Both can be cut to fit the size of your bathroom.</p>\r\n".html2String)
+    
+    @IBOutlet var labelBox: NSTextFieldCell!
     
     @IBOutlet weak var productTable: NSTableView!
     @IBOutlet weak var productImage: NSImageView!
@@ -27,6 +25,7 @@ class ProductDP: NSViewController {
     @IBOutlet weak var productShortDescription: NSTextField!
     @IBOutlet weak var productPrice: NSTextField!
     
+    //Notification to hide the search page
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideSearch:", name:"hideMySearch", object: nil)
     }
@@ -35,6 +34,7 @@ class ProductDP: NSViewController {
         productTable.reloadData()
     }
     
+    //Selection funtionality
     var selectedRow = -1
     func selectedProduct() -> ProductsData? {
         selectedRow = self.productTable.selectedRow;
@@ -45,7 +45,7 @@ class ProductDP: NSViewController {
         return nil
     }
     
-    //Initialize the Lables showing on the coupon details
+    //Initialize the Lables showing on the coupon details and update by selection
     func updateDetailInfo(doc: ProductsData?) {
         var productImage : NSImage?
         var productName = ""
@@ -72,8 +72,10 @@ class ProductDP: NSViewController {
         self.productLongDescription.stringValue = productLongDescription
         self.productShortDescription.stringValue = productShortDescription
         self.productPrice.doubleValue = Double(productPrice)
+        self.labelBox.stringValue = box
     }
     
+    //Creating the data array
     var sampleProducts = [ProductsData]()
     func createProducts() {
     var product1 = ProductsData(productID: 1, productName: "Converse", productSize: "9", productColor: "Gray", productImage: NSImage(named: "product1"), productThumb: NSImage(named: "product1t"), productLongDescription: "An intricate outline of floral patterns turns our iconic Converse sneakers into a stylish shoe that spices up your outfit.", productShortDescription: "nice shoes", productPrice: 59.99)
@@ -84,7 +86,6 @@ class ProductDP: NSViewController {
     
     //Configuring Search
     var finalArray = [0]
-//    var workingArray = sampleProducts
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
         
@@ -105,7 +106,7 @@ class ProductDP: NSViewController {
 //                  }
                     }
             
-            //creating the table array
+        //creating the table array
         createProducts()
         var workingArray = sampleProducts
         sampleProducts = []
@@ -124,7 +125,11 @@ class ProductDP: NSViewController {
         AppDelegate.globalValues.flagToHideHome = false
         NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
         AppDelegate.globalValues.flagToHideSearch = true
+        NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
     }
+    
+    
+    
 }
 
 

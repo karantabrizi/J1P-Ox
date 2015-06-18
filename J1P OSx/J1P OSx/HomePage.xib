@@ -47,6 +47,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="json:" target="-2" id="guj-kF-dBi"/>
+                            </connections>
                         </button>
                     </subviews>
                 </customView>
@@ -77,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" placeholderIntrinsicWidth="966" placeholderIntrinsicHeight="438" allowsExpansionToolTips="YES" selectionHighlightStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" typeSelect="NO" rowHeight="220" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="EDb-1z-iBb">
-                                <rect key="frame" x="0.0" y="0.0" width="956" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="960" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

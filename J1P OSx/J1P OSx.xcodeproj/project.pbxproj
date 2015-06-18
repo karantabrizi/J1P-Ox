@@ -19,7 +19,8 @@
 		C0E5D4901B2F182E0064BFF9 /* ProductDP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D48E1B2F182E0064BFF9 /* ProductDP.swift */; };
 		C0E5D4911B2F182E0064BFF9 /* ProductDP.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0E5D48F1B2F182E0064BFF9 /* ProductDP.xib */; };
 		C0E5D4931B2F1B050064BFF9 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */; };
-		C0E5D49D1B2F51350064BFF9 /* ProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */; };
+		C0E72ED61B31CAB8003EA632 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E72ED51B31CAB8003EA632 /* RestAPIManager.swift */; };
+		C0E72ED81B31DED2003EA632 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E72ED71B31DED2003EA632 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,8 @@
 		C0E5D48E1B2F182E0064BFF9 /* ProductDP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductDP.swift; path = ../ProductDP.swift; sourceTree = "<group>"; };
 		C0E5D48F1B2F182E0064BFF9 /* ProductDP.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductDP.xib; path = ../ProductDP.xib; sourceTree = "<group>"; };
 		C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsData.swift; sourceTree = "<group>"; };
-		C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductCollectionView.swift; path = ../ProductCollectionView.swift; sourceTree = "<group>"; };
+		C0E72ED51B31CAB8003EA632 /* RestAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		C0E72ED71B31DED2003EA632 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +146,8 @@
 			children = (
 				C0D7C38C1B21016D0092BB75 /* CouponData.swift */,
 				C0E5D4921B2F1B050064BFF9 /* ProductsData.swift */,
-				C0E5D49C1B2F51350064BFF9 /* ProductCollectionView.swift */,
+				C0E72ED71B31DED2003EA632 /* SwiftyJSON.swift */,
+				C0E72ED51B31CAB8003EA632 /* RestAPIManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -253,10 +256,11 @@
 			files = (
 				C0E5D4931B2F1B050064BFF9 /* ProductsData.swift in Sources */,
 				C0D7C38D1B21016D0092BB75 /* CouponData.swift in Sources */,
+				C0E72ED61B31CAB8003EA632 /* RestAPIManager.swift in Sources */,
+				C0E72ED81B31DED2003EA632 /* SwiftyJSON.swift in Sources */,
 				C0D7C36C1B20F8C60092BB75 /* AppDelegate.swift in Sources */,
 				C0D7C3881B20FA0B0092BB75 /* HomePage.swift in Sources */,
 				C0E5D4901B2F182E0064BFF9 /* ProductDP.swift in Sources */,
-				C0E5D49D1B2F51350064BFF9 /* ProductCollectionView.swift in Sources */,
 				C044EC591B22625000FF93A7 /* DetailsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

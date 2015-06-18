@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ProductDP" customModule="J1P_OSx" customModuleProvider="target">
             <connections>
+                <outlet property="labelBox" destination="MYE-SN-5E3" id="TWw-My-2DK"/>
                 <outlet property="productColor" destination="bQS-QK-6Tc" id="Dfu-dd-E3h"/>
                 <outlet property="productImage" destination="cs1-aP-C3c" id="rIa-MR-pvD"/>
                 <outlet property="productLongDescription" destination="uFD-5x-9vA" id="NoL-qA-67q"/>
@@ -59,6 +60,10 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-aP-C3c">
+                            <rect key="frame" x="49" y="189" width="200" height="180"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h9M-IT-sJ2"/>
+                        </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-Ds-EqC">
                             <rect key="frame" x="255" y="352" width="439" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="qft-gq-2aU">
@@ -118,10 +123,14 @@
                                 <action selector="searchField:" target="-2" id="yct-QY-ODF"/>
                             </connections>
                         </searchField>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-aP-C3c">
-                            <rect key="frame" x="49" y="189" width="200" height="180"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h9M-IT-sJ2"/>
-                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tNn-eD-4qG">
+                            <rect key="frame" x="340" y="237" width="218" height="135"/>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Label" id="MYE-SN-5E3">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okz-PC-Rnh" userLabel="StickyArea2">

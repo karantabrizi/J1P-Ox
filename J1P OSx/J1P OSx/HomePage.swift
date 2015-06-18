@@ -33,8 +33,6 @@ class HomePage: NSViewController {
         AppDelegate.globalValues.flagToHideDetails = true
         NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
-        
-//                var box = ("<div>Testing<br></div><img src='http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/4/11/1397210130748/Spring-Lamb.-Image-shot-2-011.jpg'>".html2String)
     }
     func hidePage(notification: NSNotification){
         self.view.hidden = AppDelegate.globalValues.flagToHideHome
@@ -74,8 +72,24 @@ class HomePage: NSViewController {
         // Preventing Errors if the columns are not the same size by repeating the last coupon
         if couponsLeft.count != couponsRight.count
         { couponsRight.append(couponsLeft.last!)}
-}
-    
+    }
+    //get JSON --------------------------------------------
+        @IBAction func json(sender: NSButton) {
+        RestAPIManager.sharedInstance.getProducts{ json in
+            let count = json["count"].numberValue.integerValue
+            println(count)
+            let products = json["products"].arrayValue
+            var x = 0
+            for item in products {
+                let oneObj = item.dictionaryValue
+                let name = oneObj["name"]!.stringValue
+                let url = oneObj["url"]!.stringValue
+                let id = oneObj["id"]!.stringValue
+                x += 1
+                if x>count {break}
+            }
+        }
+    }
 }
 // Give the table number of rows
 extension HomePage: NSTableViewDataSource {
@@ -106,11 +120,11 @@ extension HomePage: NSTableViewDataSource {
     }
     @IBAction func leftColumnCheck(sender: NSButton) {
         leftColSel += 1
-        println("left is \(leftColSel)")
+//        println("left is \(leftColSel)")
     }
     @IBAction func rightColumnCheck(sender: NSButton) {
         rightColSel += 1
-        println("right is \(rightColSel)")
+//        println("right is \(rightColSel)")
     }
 
 }
