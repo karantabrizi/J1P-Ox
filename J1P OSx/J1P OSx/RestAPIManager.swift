@@ -11,23 +11,22 @@ import Foundation
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
 class RestAPIManager: NSObject {
-    static let sharedInstance = RestAPIManager()
-    
-    let baseURL = "http://api.jcpenney.com/v2/search?q=sh"
+
+    var baseURL = "http://api.jcpenney.com/v2/search?q=\(AppDelegate.globalValues.keyWord)"
     
     func getProducts(onCompletion: (JSON) -> Void) {
-        let route = baseURL
+        var route = baseURL
         makeHTTPGetRequest(route, onCompletion: { json, err -> Void in
             onCompletion(json as JSON)
         })}
     
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
+        var request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
-        let session = NSURLSession.sharedSession()
+        var session = NSURLSession.sharedSession()
         
-        let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error -> Void in
-            let json:JSON = JSON(data: data)
+        var task = session.dataTaskWithRequest(request, completionHandler: { data, response, error -> Void in
+            var json:JSON = JSON(data: data)
             onCompletion(json,error)
         })
         task.resume()

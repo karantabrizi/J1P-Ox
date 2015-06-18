@@ -27,12 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var flagToHideHome = false
         static var flagToHideSearch = false
         static var flagToHideDetails = false
+        static var keyWord = ""
     }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         productDP = ProductDP(nibName: "ProductDP", bundle: nil)
-        productDP.createProducts()
+//        productDP.createProducts()
         window.contentView.addSubview(productDP.view)
         productDP.view.frame = (window.contentView as! NSView).bounds
         

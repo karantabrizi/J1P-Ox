@@ -10,27 +10,29 @@ import Foundation
 import AppKit
 
 class ProductsData: NSObject {
-    var productID: Int?
+    var productID: String?
     var productName: String?
-    var productSize: String?
-    var productColor: String?
-    var productImage: NSImage?
-    var productThumb: NSImage?
-    var productLongDescription: String?
-    var productShortDescription: String?
-    var productPrice: Double?
+//    var productSize: String?
+//    var productColor: String?
+    var productImage :  String?
+//    var productThumb: NSImage?
+//    var productLongDescription: String?
+//    var productShortDescription: String?
+    var productPrice: String?
+    var productUrl: String?
 
     
-    init( productID: Int?, productName: String?, productSize: String?, productColor: String?, productImage: NSImage?, productThumb: NSImage?, productLongDescription: String?, productShortDescription: String?, productPrice: Double?) {
+    init( productID: String?, productName: String?, /*productSize: String?, productColor: String?, */productImage: String?, /*productThumb: NSImage?, productLongDescription: String?, productShortDescription: String?, */productPrice: String?, productUrl: String?) {
         self.productID = productID
         self.productName = productName
-        self.productSize = productSize
-        self.productColor = productColor
+//        self.productSize = productSize
+//        self.productColor = productColor
         self.productImage = productImage
-        self.productThumb = productThumb
-        self.productLongDescription = productLongDescription
-        self.productShortDescription = productShortDescription
+//        self.productThumb = productThumb
+//        self.productLongDescription = productLongDescription
+//        self.productShortDescription = productShortDescription
         self.productPrice = productPrice
+        self.productUrl = productUrl
     }
     
 }

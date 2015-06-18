@@ -75,20 +75,7 @@ class HomePage: NSViewController {
     }
     //get JSON --------------------------------------------
         @IBAction func json(sender: NSButton) {
-        RestAPIManager.sharedInstance.getProducts{ json in
-            let count = json["count"].numberValue.integerValue
-            println(count)
-            let products = json["products"].arrayValue
-            var x = 0
-            for item in products {
-                let oneObj = item.dictionaryValue
-                let name = oneObj["name"]!.stringValue
-                let url = oneObj["url"]!.stringValue
-                let id = oneObj["id"]!.stringValue
-                x += 1
-                if x>count {break}
-            }
-        }
+        
     }
 }
 // Give the table number of rows
