@@ -12,8 +12,8 @@ import Foundation
 
 class ProductDP: NSViewController {
     
-    var box = ("<p>Outfit your bathroom with soft new carpet from this rug collection featuring a nonskid latex back.</p>\r\n<ul>\r\n\t<li>\r\n\t\tvibrant, lasting color&mdash;wash after wash</li>\r\n\t<li>\r\n\t\tstain resistant</li>\r\n\t<li>\r\n\t\tultra soft</li>\r\n\t<li>\r\n\t\tcoordinates with Signature Soft Solid and Damask towels</li>\r\n</ul>\r\n<p>Nylon. Washable. Made in America.</p>\r\n<ul>\r\n\t<li>\r\n\t\tOblong rugs: available in 17x24&rdquo;, 20x34&rdquo;, 24x40&quot;, 30x50&quot; and 20x60&quot;</li>\r\n\t<li>\r\n\t\tContour rug (fits around toilet base): 20x24&quot;</li>\r\n\t<li>\r\n\t\tStandard Lid Cover: 17x19&quot;</li>\r\n\t<li>\r\n\t\tElongated Lid Cover: 17x21&quot;</li>\r\n\t<li>\r\n\t\tTank set: 13x27&quot; and 15x39&quot;</li>\r\n\t<li>\r\n\t\tCarpets: 60x72&quot; and 72x120&quot;</li>\r\n</ul>\r\n<p>Note:&nbsp;60x72&quot; is a 5x6&#39; carpet and 72x120&quot; is a 6x10&#39; carpet. Both can be cut to fit the size of your bathroom.</p>\r\n".html2String)
     
+    @IBOutlet weak var noSearchResult: NSTextField!
     @IBOutlet weak var productTable: NSTableView!
     @IBOutlet weak var productImage: NSImageView!
     @IBOutlet weak var productName: NSTextField!
@@ -49,7 +49,7 @@ class ProductDP: NSViewController {
         var productName = ""
 //        var productColor = ""
 //        var productSize = ""
-//        var productLongDescription = ""
+        var productLongDescription = ""
 //        var productShortDescription = ""
         var productPrice = ""
         
@@ -58,7 +58,7 @@ class ProductDP: NSViewController {
             productName = ProductsData.productName!
 //            productColor = ProductsData.productColor!
 //            productSize = ProductsData.productSize!
-//            productLongDescription = ProductsData.productLongDescription!
+            productLongDescription = ProductsData.productLongDescription!
 //            productShortDescription = ProductsData.productShortDescription!
             productPrice = ProductsData.productPrice!
         }
@@ -69,7 +69,7 @@ class ProductDP: NSViewController {
         self.productName.stringValue = productName
 //        self.productColor.stringValue = productColor
 //        self.productSize.stringValue = productSize
-//        self.productLongDescription.stringValue = productLongDescription
+        self.productLongDescription.stringValue = productLongDescription.html2String
 //        self.productShortDescription.stringValue = productShortDescription
         self.productPrice.stringValue = productPrice
     }
@@ -78,7 +78,7 @@ class ProductDP: NSViewController {
     var sampleProducts = [ProductsData]()
     func createProducts() {
         for index in 0...counter {
-        var product = ProductsData(productID: jsonProductID[index], productName: jsonProductName[index], /*productSize: "9", productColor: "Gray", */productImage: jsonProductImage[index], /*productThumb: NSImage(named: "product1t"), productLongDescription: "An intricate outline of floral patterns turns our iconic Converse sneakers into a stylish shoe that spices up your outfit.", productShortDescription: "nice shoes",*/ productPrice: jsonProductPrice[index], productUrl: jsonProductUrl[index])
+        var product = ProductsData(productID: jsonProductID[index], productName: jsonProductName[index], productImage: jsonProductImage[index], productLongDescription: jsonProductLongDescription[index], productPrice: jsonProductPrice[index], productUrl: jsonProductUrl[index])
         sampleProducts.insert(product, atIndex: index)
     }
     }
@@ -125,14 +125,17 @@ class ProductDP: NSViewController {
     var jsonProductID : [String] = []
     var jsonProductImage : [String] = []
     var jsonProductPrice : [String] = []
-    var jsonProductLongDescription = ""
+    var jsonProductLongDescription : [String] = []/*[String](count: 5, repeatedValue : "")*/
     var data = NSData.self
     var count = 0
     var counter = 0
     
-    func getJSON () {
+    func getJsonProduct () {
+        self.jsonProductLongDescription = Array(count: 5, repeatedValue : " ")
         RestAPIManager().getProducts{ json in
             self.count = json["count"].numberValue.integerValue
+            println(self.count)
+            if self.count == 0 {return}
             var products = json["products"].arrayValue
             for item in products {
                 var productObject = item.dictionaryValue
@@ -145,20 +148,30 @@ class ProductDP: NSViewController {
                 var prices = productObject["prices"]!.arrayValue
                 var pricesObject = prices[0].dictionaryValue
                 self.jsonProductPrice.insert(pricesObject["max"]!.stringValue, atIndex : self.counter)
-
+                
                 if (self.counter > self.count-2) || (self.counter > 3) {break}
                 self.counter += 1
             }
         }
     }
     
-    //to be moved to the func above
-    func getProductInfo () {
+    //Parsing the product details json
+    func getJsonDetail () {
+        AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow].substringFromIndex(advance(self.jsonProductUrl[self.productTable.selectedRow].startIndex,30))
         RestAPIManager().getProducts{ json in
-            self.jsonProductLongDescription = json["description"].stringValue
+            println(self.productTable.selectedRow)
+            self.jsonProductLongDescription[self.productTable.selectedRow] = json["description"].stringValue
         }
     }
-
+    
+    //converting character "space" to "%20"
+    func convertSpaceCharacter () {
+        var toArray = searchedWord.stringValue.componentsSeparatedByString(" ")
+        AppDelegate.globalValues.keyWord  = join("%20", toArray)
+        AppDelegate.globalValues.keyWord = "search?q=\(AppDelegate.globalValues.keyWord)"
+    }
+    
+    
     //creating the table array
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
@@ -167,11 +180,22 @@ class ProductDP: NSViewController {
         self.jsonProductID = []
         self.jsonProductImage = []
         self.jsonProductPrice = []
+        self.jsonProductLongDescription = []
         self.counter = 0
         if searchedWord.stringValue != "" {
-            AppDelegate.globalValues.keyWord = searchedWord.title
-            getJSON()
+            convertSpaceCharacter()
+            getJsonProduct()
             sleep(3)
+            
+            //If no result comes back from search
+            if self.count == 0 {
+                self.noSearchResult.stringValue = "There is no result searching for \"\(searchedWord.title)\"."
+                return
+            }
+            else {
+                self.noSearchResult.stringValue = ""
+            }
+            
             createProducts()
             productTable.reloadData()
         } else {
@@ -217,6 +241,9 @@ extension ProductDP: NSTableViewDataSource {
 // MARK: - NSTableViewDelegate
 extension ProductDP: NSTableViewDelegate {
     func tableViewSelectionDidChange(notification: NSNotification) {
+        getJsonDetail()
+        sleep(2)
+        createProducts()
         var selectedDoc = selectedProduct()
         updateDetailInfo(selectedDoc)
     }

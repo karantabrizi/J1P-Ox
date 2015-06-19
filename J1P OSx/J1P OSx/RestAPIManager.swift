@@ -12,7 +12,7 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 
 class RestAPIManager: NSObject {
 
-    var baseURL = "http://api.jcpenney.com/v2/search?q=\(AppDelegate.globalValues.keyWord)"
+    var baseURL = "http://api.jcpenney.com/v2/\(AppDelegate.globalValues.keyWord)"
     
     func getProducts(onCompletion: (JSON) -> Void) {
         var route = baseURL

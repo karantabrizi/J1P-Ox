@@ -37,15 +37,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView.addSubview(productDP.view)
         productDP.view.frame = (window.contentView as! NSView).bounds
         
-        detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
-        detailsPage.createCoupons()
-        window.contentView.addSubview(detailsPage.view)
-        detailsPage.view.frame = (window.contentView as! NSView).bounds
-        
-        homePage = HomePage(nibName: "HomePage", bundle: nil)
-        homePage.createCoupons()
-        window.contentView.addSubview(homePage.view)
-        homePage.view.frame = (window.contentView as! NSView).bounds
+//        detailsPage = DetailsPage(nibName: "DetailsPage", bundle: nil)
+//        detailsPage.createCoupons()
+//        window.contentView.addSubview(detailsPage.view)
+//        detailsPage.view.frame = (window.contentView as! NSView).bounds
+//        
+//        homePage = HomePage(nibName: "HomePage", bundle: nil)
+//        homePage.createCoupons()
+//        window.contentView.addSubview(homePage.view)
+//        homePage.view.frame = (window.contentView as! NSView).bounds
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

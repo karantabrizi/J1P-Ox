@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ProductDP" customModule="J1P_OSx" customModuleProvider="target">
             <connections>
+                <outlet property="noSearchResult" destination="FMo-lw-AL5" id="PFq-mh-C1k"/>
                 <outlet property="productColor" destination="bQS-QK-6Tc" id="Dfu-dd-E3h"/>
                 <outlet property="productImage" destination="cs1-aP-C3c" id="rIa-MR-pvD"/>
                 <outlet property="productLongDescription" destination="uFD-5x-9vA" id="NoL-qA-67q"/>
@@ -61,16 +62,8 @@
                         </scrollView>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-aP-C3c">
                             <rect key="frame" x="49" y="189" width="200" height="180"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="blank_grey" id="h9M-IT-sJ2"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="h9M-IT-sJ2"/>
                         </imageView>
-                        <textField identifier="productName" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-Ds-EqC">
-                            <rect key="frame" x="255" y="352" width="439" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="qft-gq-2aU">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <textField identifier="productColor" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQS-QK-6Tc">
                             <rect key="frame" x="78" y="100" width="125" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Oud-9A-zGv">
@@ -82,14 +75,6 @@
                         <textField identifier="productSize" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YpC-Lu-SCD">
                             <rect key="frame" x="78" y="80" width="124" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Xpu-1Z-W6t">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField identifier="productLongDescription" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFD-5x-9vA">
-                            <rect key="frame" x="255" y="0.0" width="439" height="319"/>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kH0-l3-IDK">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -118,6 +103,30 @@
                             <rect key="frame" x="35" y="12" width="178" height="105"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="2Ek-tI-RZV">
                                 <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField identifier="productName" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-Ds-EqC">
+                            <rect key="frame" x="18" y="377" width="676" height="27"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="qft-gq-2aU">
+                                <font key="font" metaFont="system" size="18"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField identifier="productLongDescription" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFD-5x-9vA">
+                            <rect key="frame" x="255" y="0.0" width="437" height="369"/>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kH0-l3-IDK">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FMo-lw-AL5">
+                            <rect key="frame" x="18" y="288" width="674" height="29"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="D0U-qo-sG5">
+                                <font key="font" metaFont="system" size="24"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -188,7 +197,7 @@
                                                         <rect key="frame" x="3" y="-3" width="110" height="110"/>
                                                         <imageCell key="cell" truncatesLastVisibleLine="YES" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="scisor" id="1dT-NX-upO"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-PC-Xdm">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-PC-Xdm">
                                                         <rect key="frame" x="124" y="8" width="110" height="88"/>
                                                         <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" drawsBackground="YES" id="rTO-qD-YHS">
                                                             <font key="font" metaFont="system"/>
@@ -228,7 +237,6 @@
         <userDefaultsController representsSharedInstance="YES" id="xdm-im-efD"/>
     </objects>
     <resources>
-        <image name="blank_grey" width="171" height="200"/>
         <image name="home" width="171" height="200"/>
         <image name="jcpenney" width="995" height="200"/>
         <image name="scisor" width="54" height="78"/>
