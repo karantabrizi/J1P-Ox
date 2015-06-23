@@ -13,6 +13,7 @@ import Foundation
 class ProductDP: NSViewController {
     
     
+    @IBOutlet weak var detailsBackground: NSView!
     @IBOutlet weak var noSearchResult: NSTextField!
     @IBOutlet weak var productTable: NSTableView!
     @IBOutlet weak var productImage: NSImageView!
@@ -28,6 +29,9 @@ class ProductDP: NSViewController {
     //Notification to hide the search page
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideSearch:", name:"hideMySearch", object: nil)
+        detailsBackground.layer?.backgroundColor = NSColor.whiteColor().CGColor
+        detailsBackground.layer!.borderWidth      = 0.5
+        detailsBackground.layer!.borderColor = NSColor.grayColor().CGColor
     }
     func hideSearch(notification: NSNotification){
         self.view.hidden = AppDelegate.globalValues.flagToHideSearch
@@ -134,7 +138,7 @@ class ProductDP: NSViewController {
     var counter = 0
     
     //Get the serach results from API
-    func getJsonProduct () {
+    func getJsonProduct (complition: (results: Bool) -> Void) {
         self.jsonProductLongDescription = Array(count: 5, repeatedValue : " ")
         RestAPIManager().getProducts{ json in
             self.count = json["count"].numberValue.integerValue
@@ -156,15 +160,17 @@ class ProductDP: NSViewController {
                 if (self.counter > self.count-2) || (self.counter > 3) {break}
                 self.counter += 1
             }
+            complition(results: true)
         }
     }
     
     //Parsing the product details json
     func getJsonDetail () {
-        AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow]/*.substringFromIndex(advance(self.jsonProductUrl[self.productTable.selectedRow].startIndex,30))*/
+        AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow]
+        var tempValue = self.productTable.selectedRow
         RestAPIManager().getProducts{ json in
             println(self.productTable.selectedRow)
-            self.jsonProductLongDescription[self.productTable.selectedRow] = json["description"].stringValue
+            self.jsonProductLongDescription[tempValue] = json["description"].stringValue
         }
     }
     
@@ -177,6 +183,7 @@ class ProductDP: NSViewController {
     
     //Deleting Previous Values
     func clearProductList() {
+        self.sampleProducts = []
         self.jsonProductName = []
         self.jsonProductUrl = []
         self.jsonProductID = []
@@ -199,28 +206,33 @@ class ProductDP: NSViewController {
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
         if searchedWord.stringValue != "" {
-            self.progressIndicator.startAnimation(self)
+//            self.progressIndicator.startAnimation(self)
             clearProductList()
             clearProductDetailsPage ()
             convertSpaceCharacter()
-            getJsonProduct()
-            sleep(3)
+            getJsonProduct({ (results) -> Void in
             
-            //If no result comes back from search
-            if self.count == 0 {
-                self.noSearchResult.stringValue = "There is no result searching for \"\(searchedWord.title)\"."
-                return
-            }
-            else {
-                self.noSearchResult.stringValue = ""
-            }
+                if results == true {
+//                sleep(3)
+                    //If no result comes back from search
+                    if self.count == 0 {
+                        self.noSearchResult.stringValue = "There is no result searching for \"\(self.searchedWord.title)\"."
+                        return
+                    }
+                    else {
+                        self.noSearchResult.stringValue = ""
+                    }
             
-            createProducts()
-            productTable.reloadData()
+                    self.createProducts()
+                    self.productTable.reloadData()
+//                    self.progressIndicator.stopAnimation(self)
+                }
+            })
         } else {
             clearProductDetailsPage()
+            self.progressIndicator.stopAnimation(self)
         }
-        self.progressIndicator.stopAnimation(self)
+        
     }
     
     //HomeButton function
