@@ -206,7 +206,7 @@ class ProductDP: NSViewController {
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
         if searchedWord.stringValue != "" {
-//            self.progressIndicator.startAnimation(self)
+            self.progressIndicator.startAnimation(self)
             clearProductList()
             clearProductDetailsPage ()
             convertSpaceCharacter()
@@ -225,7 +225,7 @@ class ProductDP: NSViewController {
             
                     self.createProducts()
                     self.productTable.reloadData()
-//                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.stopAnimation(self)
                 }
             })
         } else {
