@@ -15,6 +15,7 @@
                 <outlet property="productShortDescription" destination="BhG-rW-YgE" id="DNN-TC-2eB"/>
                 <outlet property="productSize" destination="YpC-Lu-SCD" id="lqO-Gr-f8v"/>
                 <outlet property="productTable" destination="1g3-EI-DXV" id="MJc-FL-Eu2"/>
+                <outlet property="progressIndicator" destination="Rom-GS-Cxs" id="9lW-Mv-qL5"/>
                 <outlet property="searchedWord" destination="Zxc-qh-RZ9" id="qie-1W-xvm"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -29,7 +30,7 @@
                     <rect key="frame" x="-10" y="120" width="980" height="540"/>
                     <color key="color" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWV-uL-II4">
+                <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWV-uL-II4">
                     <rect key="frame" x="248" y="130" width="712" height="440"/>
                     <subviews>
                         <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shd-nk-6UK">
@@ -90,7 +91,7 @@
                         </textField>
                         <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRQ-y3-GMf">
                             <rect key="frame" x="121" y="418" width="495" height="22"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Zxc-qh-RZ9">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="Zxc-qh-RZ9">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -131,6 +132,10 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-GS-Cxs">
+                            <rect key="frame" x="352" y="189" width="32" height="32"/>
+                            <animations/>
+                        </progressIndicator>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okz-PC-Rnh" userLabel="StickyArea2">

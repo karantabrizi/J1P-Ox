@@ -22,6 +22,8 @@ class ProductDP: NSViewController {
     @IBOutlet weak var productLongDescription: NSTextField!
     @IBOutlet weak var productShortDescription: NSTextField!
     @IBOutlet weak var productPrice: NSTextField!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+
     
     //Notification to hide the search page
     override func viewDidLoad() {
@@ -77,6 +79,7 @@ class ProductDP: NSViewController {
     //Creating the data array
     var sampleProducts = [ProductsData]()
     func createProducts() {
+        sampleProducts = []
         for index in 0...counter {
         var product = ProductsData(productID: jsonProductID[index], productName: jsonProductName[index], productImage: jsonProductImage[index], productLongDescription: jsonProductLongDescription[index], productPrice: jsonProductPrice[index], productUrl: jsonProductUrl[index])
         sampleProducts.insert(product, atIndex: index)
@@ -130,6 +133,7 @@ class ProductDP: NSViewController {
     var count = 0
     var counter = 0
     
+    //Get the serach results from API
     func getJsonProduct () {
         self.jsonProductLongDescription = Array(count: 5, repeatedValue : " ")
         RestAPIManager().getProducts{ json in
@@ -157,7 +161,7 @@ class ProductDP: NSViewController {
     
     //Parsing the product details json
     func getJsonDetail () {
-        AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow].substringFromIndex(advance(self.jsonProductUrl[self.productTable.selectedRow].startIndex,30))
+        AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow]/*.substringFromIndex(advance(self.jsonProductUrl[self.productTable.selectedRow].startIndex,30))*/
         RestAPIManager().getProducts{ json in
             println(self.productTable.selectedRow)
             self.jsonProductLongDescription[self.productTable.selectedRow] = json["description"].stringValue
@@ -168,21 +172,36 @@ class ProductDP: NSViewController {
     func convertSpaceCharacter () {
         var toArray = searchedWord.stringValue.componentsSeparatedByString(" ")
         AppDelegate.globalValues.keyWord  = join("%20", toArray)
-        AppDelegate.globalValues.keyWord = "search?q=\(AppDelegate.globalValues.keyWord)"
+        AppDelegate.globalValues.keyWord = "http://api.jcpenney.com/v2/search?q=\(AppDelegate.globalValues.keyWord)"
     }
     
-    
-    //creating the table array
-    @IBOutlet weak var searchedWord: NSSearchFieldCell!
-    @IBAction func searchField(sender: NSSearchField) {
+    //Deleting Previous Values
+    func clearProductList() {
         self.jsonProductName = []
         self.jsonProductUrl = []
         self.jsonProductID = []
         self.jsonProductImage = []
         self.jsonProductPrice = []
-        self.jsonProductLongDescription = []
+//        self.jsonProductLongDescription = []
         self.counter = 0
+    }
+    func clearProductDetailsPage () {
+        self.productImage.image = NSImage()
+        self.productName.stringValue = ""
+        //        productColor: NSTextField!
+        //        productSize: NSTextField!
+        self.productLongDescription.stringValue = ""
+        //        productShortDescription: NSTextField!
+        self.productPrice.stringValue = ""
+    }
+    
+    //creating the table array
+    @IBOutlet weak var searchedWord: NSSearchFieldCell!
+    @IBAction func searchField(sender: NSSearchField) {
         if searchedWord.stringValue != "" {
+            self.progressIndicator.startAnimation(self)
+            clearProductList()
+            clearProductDetailsPage ()
             convertSpaceCharacter()
             getJsonProduct()
             sleep(3)
@@ -199,9 +218,9 @@ class ProductDP: NSViewController {
             createProducts()
             productTable.reloadData()
         } else {
-            sampleProducts = []
-            productTable.reloadData()
+            clearProductDetailsPage()
         }
+        self.progressIndicator.stopAnimation(self)
     }
     
     //HomeButton function
@@ -214,37 +233,51 @@ class ProductDP: NSViewController {
 }
 
 
+
 // Give the table number of rows
 extension ProductDP: NSTableViewDataSource {
     func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
         return self.sampleProducts.count
 }
-
     // Define the table view and cell view
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         var cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
-
+        
         //put the cells there edit the image based on selected/notselected
         cellView.textField!.stringValue = sampleProducts[row].productName!
         var url = NSURL(string: sampleProducts[row].productImage!)
         if var data = NSData(contentsOfURL: url!){
             cellView.imageView!.image = NSImage(data: data)}
         if row == selectedRow {
-            cellView.textField!.stringValue = "SELECTED"
+            cellView.textField!.textColor = NSColor.redColor()
+//            cellView.textField!.backgroundColor = NSColor.whiteColor()
             selectedRow = -1
-        }
+        } else { cellView.textField!.textColor = NSColor.blackColor() }
         return cellView
     }
+    
+    //Changing the selecting color for the table
+    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let myCustomView = MyRowView()
+        return myCustomView
+    }
+    
 }
 
 // MARK: - NSTableViewDelegate
 extension ProductDP: NSTableViewDelegate {
+    
     func tableViewSelectionDidChange(notification: NSNotification) {
-        getJsonDetail()
-        sleep(2)
-        createProducts()
+        clearProductDetailsPage()
+        self.progressIndicator.startAnimation(self)
+        if self.jsonProductLongDescription[self.productTable.selectedRow] == " " {
+            getJsonDetail()
+            sleep(3)
+            createProducts()
+        }
         var selectedDoc = selectedProduct()
         updateDetailInfo(selectedDoc)
+        self.progressIndicator.stopAnimation(self)
     }
 }

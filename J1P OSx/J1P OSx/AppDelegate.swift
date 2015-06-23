@@ -14,6 +14,18 @@ extension String {
     }
 }
 
+class MyRowView: NSTableRowView {
+    
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        
+        if selected == true {
+            NSColor.redColor().set()
+            NSRectFill(dirtyRect)
+        }
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var homePage: HomePage!
