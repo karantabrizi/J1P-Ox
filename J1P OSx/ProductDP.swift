@@ -14,7 +14,7 @@ class ProductDP: NSViewController {
     
     
     @IBOutlet weak var detailsBackground: NSView!
-    @IBOutlet weak var noSearchResult: NSTextField!
+    @IBOutlet weak var errorHandler: NSTextField!
     @IBOutlet weak var productTable: NSTableView!
     @IBOutlet weak var productImage: NSImageView!
     @IBOutlet weak var productName: NSTextField!
@@ -49,7 +49,7 @@ class ProductDP: NSViewController {
         return nil
     }
     
-    //Initialize the Lables showing on the coupon details and update by selection
+    //Initialize the Lables showing on the details page and update by selection
     func updateDetailInfo(doc: ProductsData?) {
         var productImage = ""
         var productName = ""
@@ -112,21 +112,6 @@ class ProductDP: NSViewController {
 ////                  }
 //                    }
     
-        //creating the table array of dummy products
-//        createProducts()
-//        var workingArray = sampleProducts
-//        sampleProducts = []
-//        for product in workingArray {
-//            for ID in finalArray {
-//                if product.productID == ID {
-//                    sampleProducts.append(product)
-//                }
-//            }
-//        }
-//        productTable.reloadData()
-//        }
-//        }
-    
     var jsonProductName : [String] = []
     var jsonProductUrl : [String] = []
     var jsonProductID : [String] = []
@@ -142,8 +127,9 @@ class ProductDP: NSViewController {
         self.jsonProductLongDescription = Array(count: 5, repeatedValue : " ")
         RestAPIManager().getProducts{ json in
             self.count = json["count"].numberValue.integerValue
-            println(self.count)
-            if self.count == 0 {return}
+            if self.count == 0 {
+                complition(results: true)
+                return}
             var products = json["products"].arrayValue
             for item in products {
                 var productObject = item.dictionaryValue
@@ -164,13 +150,25 @@ class ProductDP: NSViewController {
         }
     }
     
+    func errorHandlerFunc (){
+        self.errorHandler.stringValue = "Please try another search."
+        self.progressIndicator.stopAnimation(self)
+    }
+    
     //Parsing the product details json
-    func getJsonDetail () {
+    func getJsonDetail (complition: (results: Bool) -> Void) {
+        
+        //Error Handling 
+        if self.jsonProductUrl.count < self.productTable.selectedRow + 1 {
+            errorHandlerFunc()
+            return
+        }
+        
         AppDelegate.globalValues.keyWord = self.jsonProductUrl[self.productTable.selectedRow]
         var tempValue = self.productTable.selectedRow
         RestAPIManager().getProducts{ json in
-            println(self.productTable.selectedRow)
             self.jsonProductLongDescription[tempValue] = json["description"].stringValue
+            complition(results: true)
         }
     }
     
@@ -200,6 +198,7 @@ class ProductDP: NSViewController {
         self.productLongDescription.stringValue = ""
         //        productShortDescription: NSTextField!
         self.productPrice.stringValue = ""
+        self.errorHandler.stringValue = ""
     }
     
     //creating the table array
@@ -211,22 +210,22 @@ class ProductDP: NSViewController {
             clearProductDetailsPage ()
             convertSpaceCharacter()
             getJsonProduct({ (results) -> Void in
-            
+                dispatch_async(dispatch_get_main_queue(),{
                 if results == true {
-//                sleep(3)
-                    //If no result comes back from search
                     if self.count == 0 {
-                        self.noSearchResult.stringValue = "There is no result searching for \"\(self.searchedWord.title)\"."
+                        self.errorHandler.stringValue = "There is no result searching for \"\(self.searchedWord.title)\"."
+                        self.progressIndicator.stopAnimation(self)
                         return
                     }
-                    else {
-                        self.noSearchResult.stringValue = ""
-                    }
+//                    else {
+//                        self.errorHandler.stringValue = ""
+//                    }
             
                     self.createProducts()
                     self.productTable.reloadData()
                     self.progressIndicator.stopAnimation(self)
                 }
+            })
             })
         } else {
             clearProductDetailsPage()
@@ -282,14 +281,30 @@ extension ProductDP: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(notification: NSNotification) {
         clearProductDetailsPage()
-        self.progressIndicator.startAnimation(self)
-        if self.jsonProductLongDescription[self.productTable.selectedRow] == " " {
-            getJsonDetail()
-            sleep(3)
-            createProducts()
+        
+        //Error Handling
+        if self.jsonProductUrl.count < self.productTable.selectedRow + 1 {
+            errorHandlerFunc()
+            return
         }
-        var selectedDoc = selectedProduct()
-        updateDetailInfo(selectedDoc)
+        
+        self.progressIndicator.startAnimation(self)
+        println(self.productTable.selectedRow)
+        if self.jsonProductLongDescription[self.productTable.selectedRow] == " " {
+            getJsonDetail({ (results) -> Void in
+                dispatch_async(dispatch_get_main_queue(),{
+                    if results == true {
+                        self.createProducts()
+                        var selectedDoc = self.selectedProduct()
+                        self.updateDetailInfo(selectedDoc)
+                        self.progressIndicator.stopAnimation(self)
+                    }
+                })
+            })
+        } else {
+        var selectedDoc = self.selectedProduct()
+        self.updateDetailInfo(selectedDoc)
         self.progressIndicator.stopAnimation(self)
+        }
     }
 }

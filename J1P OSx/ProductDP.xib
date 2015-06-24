@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ProductDP" customModule="J1P_OSx" customModuleProvider="target">
             <connections>
                 <outlet property="detailsBackground" destination="mWV-uL-II4" id="s5Z-dP-AEv"/>
-                <outlet property="noSearchResult" destination="FMo-lw-AL5" id="PFq-mh-C1k"/>
+                <outlet property="errorHandler" destination="FMo-lw-AL5" id="hfW-5f-i08"/>
                 <outlet property="productColor" destination="bQS-QK-6Tc" id="Dfu-dd-E3h"/>
                 <outlet property="productImage" destination="cs1-aP-C3c" id="rIa-MR-pvD"/>
                 <outlet property="productLongDescription" destination="uFD-5x-9vA" id="NoL-qA-67q"/>
@@ -35,7 +35,7 @@
                     <rect key="frame" x="248" y="130" width="712" height="410"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-aP-C3c">
-                            <rect key="frame" x="49" y="159" width="200" height="180"/>
+                            <rect key="frame" x="49" y="175" width="200" height="180"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="h9M-IT-sJ2"/>
                         </imageView>
                         <textField identifier="productColor" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQS-QK-6Tc">
@@ -71,22 +71,14 @@
                             </textFieldCell>
                         </textField>
                         <textField identifier="productName" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-Ds-EqC">
-                            <rect key="frame" x="18" y="347" width="676" height="27"/>
+                            <rect key="frame" x="17" y="363" width="676" height="27"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" placeholderString="" id="qft-gq-2aU">
                                 <font key="font" metaFont="system" size="18"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField identifier="productLongDescription" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFD-5x-9vA">
-                            <rect key="frame" x="255" y="-30" width="437" height="369"/>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kH0-l3-IDK">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FMo-lw-AL5">
+                        <textField identifier="noResult" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FMo-lw-AL5">
                             <rect key="frame" x="18" y="258" width="674" height="29"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="D0U-qo-sG5">
                                 <font key="font" metaFont="system" size="24"/>
@@ -98,6 +90,14 @@
                             <rect key="frame" x="340" y="189" width="32" height="32"/>
                             <animations/>
                         </progressIndicator>
+                        <textField identifier="productLongDescription" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFD-5x-9vA">
+                            <rect key="frame" x="255" y="-14" width="437" height="369"/>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="kH0-l3-IDK">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okz-PC-Rnh" userLabel="StickyArea2">
@@ -160,10 +160,6 @@
                                                 <rect key="frame" x="1" y="1" width="237" height="110"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-Ef-SGc">
-                                                        <rect key="frame" x="3" y="-3" width="110" height="110"/>
-                                                        <imageCell key="cell" truncatesLastVisibleLine="YES" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="scisor" id="1dT-NX-upO"/>
-                                                    </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-PC-Xdm">
                                                         <rect key="frame" x="124" y="8" width="110" height="88"/>
                                                         <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="Table View Cell" drawsBackground="YES" id="rTO-qD-YHS">
@@ -172,6 +168,10 @@
                                                             <color key="backgroundColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-Ef-SGc">
+                                                        <rect key="frame" x="3" y="-3" width="119" height="110"/>
+                                                        <imageCell key="cell" truncatesLastVisibleLine="YES" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="scisor" id="1dT-NX-upO"/>
+                                                    </imageView>
                                                 </subviews>
                                                 <connections>
                                                     <outlet property="imageView" destination="irJ-Ef-SGc" id="5Y0-MG-bmt"/>
