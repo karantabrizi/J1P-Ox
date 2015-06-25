@@ -47,34 +47,11 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system" size="10"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="json:" target="-2" id="guj-kF-dBi"/>
-                            </connections>
                         </button>
                     </subviews>
                 </customView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBF-wc-BMr">
-                    <rect key="frame" x="160" y="122" width="160" height="32"/>
-                    <buttonCell key="cell" type="push" title="Select This Column" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="Xf4-lA-XGS">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="leftColumnCheck:" target="-2" id="A26-me-xgk"/>
-                    </connections>
-                </button>
-                <button focusRingType="exterior" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SbI-cv-7nh">
-                    <rect key="frame" x="640" y="122" width="160" height="32"/>
-                    <buttonCell key="cell" type="push" title="Select This Column" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="exterior" inset="2" id="pHy-7X-Evy">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="rightColumnCheck:" target="-2" id="LKT-iw-d2c"/>
-                    </connections>
-                </button>
                 <scrollView fixedFrame="YES" placeholderIntrinsicWidth="960" placeholderIntrinsicHeight="440" borderType="none" autohidesScrollers="YES" horizontalLineScroll="222" horizontalPageScroll="10" verticalLineScroll="222" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-QF-v6t">
-                    <rect key="frame" x="0.0" y="150" width="960" height="420"/>
+                    <rect key="frame" x="0.0" y="126" width="960" height="444"/>
                     <clipView key="contentView" misplaced="YES" placeholderIntrinsicWidth="958" placeholderIntrinsicHeight="438" drawsBackground="NO" copiesOnScroll="NO" id="xKz-ER-LhL">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

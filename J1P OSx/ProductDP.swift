@@ -249,13 +249,6 @@ class ProductDP: NSViewController {
         NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
     }
 
-    func inputWordSanityCheck () {
-        var allowedCharacters:NSCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789 /")
-        if ((searchedWord.stringValue as NSString).rangeOfCharacterFromSet(allowedCharacters.invertedSet).location != NSNotFound){
-            println("Could not handle special characters")
-            return
-        } else { println("ridi")}
-    }
 }
 
 // Give the table number of rows
@@ -277,7 +270,9 @@ extension ProductDP: NSTableViewDataSource {
             cellView.textField!.textColor = NSColor.redColor()
 //            cellView.textField!.backgroundColor = NSColor.whiteColor()
             selectedRow = -1
-        } else { cellView.textField!.textColor = NSColor.blackColor() }
+        } else { cellView.textField!.textColor = NSColor.blackColor()
+//        cellView.textField!.backgroundColor = NSColor.grayColor()
+        }
         return cellView
     }
     

@@ -143,6 +143,12 @@ extension DetailsPage: NSTableViewDataSource {
         return cellView
         
     }
+    
+    //Changing the selecting color for the table
+    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let myCustomView = MyRowView()
+        return myCustomView
+    }
 
 }
 

@@ -10,20 +10,17 @@ import Cocoa
 import AppKit
 
 class HomePage: NSViewController {
+    @IBOutlet weak var rightButton: NSButton!
     
     @IBOutlet weak var tableView: NSTableView!
-
+    
     var selectedRow = -1
     var selectedCol = -1
-    var leftColSel = 0
-    var rightColSel = 0
     //Sanity check for the coupon selection
     func selectedCoupon() {
         let selectedRow = self.tableView.selectedRow
         if selectedRow >= 0 && selectedRow < self.couponsLeft.count {
-            if leftColSel % 2 == 0 {
-            AppDelegate.globalValues.homePageSelection = selectedRow * 2 + 1
-            } else { AppDelegate.globalValues.homePageSelection = selectedRow * 2 }
+            AppDelegate.globalValues.homePageSelection = selectedRow * 2
         }
     }
     
@@ -33,7 +30,10 @@ class HomePage: NSViewController {
         AppDelegate.globalValues.flagToHideDetails = true
         NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
+        
     }
+    
+    
     func hidePage(notification: NSNotification){
         self.view.hidden = AppDelegate.globalValues.flagToHideHome
         //to remove previous selection
@@ -73,10 +73,11 @@ class HomePage: NSViewController {
         if couponsLeft.count != couponsRight.count
         { couponsRight.append(couponsLeft.last!)}
     }
-    //get JSON --------------------------------------------
-        @IBAction func json(sender: NSButton) {
-        
+
+    func shod (){
+        println("shod")
     }
+    
 }
 // Give the table number of rows
 extension HomePage: NSTableViewDataSource {
@@ -96,7 +97,6 @@ extension HomePage: NSTableViewDataSource {
             return cellView
         }
         if tableColumn!.identifier == "RightColumn"{
-            
             let couponData = self.couponsRight[row]
             cellView.imageView!.image = couponData.couponImage
             cellView.textField!.stringValue = couponData.couponTitle!
@@ -105,21 +105,11 @@ extension HomePage: NSTableViewDataSource {
         selectedRow = -1
         return cellView
     }
-    @IBAction func leftColumnCheck(sender: NSButton) {
-        leftColSel += 1
-//        println("left is \(leftColSel)")
-    }
-    @IBAction func rightColumnCheck(sender: NSButton) {
-        rightColSel += 1
-//        println("right is \(rightColSel)")
-    }
-
 }
 
 // MARK: - NSTableViewDelegate
 extension HomePage: NSTableViewDelegate {
         func tableViewSelectionDidChange(notification: NSNotification) {
-            if (leftColSel + rightColSel) % 2 == 1 {
                 selectedCoupon()
                 AppDelegate.globalValues.flagToHideHome = true
                 AppDelegate.globalValues.flagToHideSearch = true
@@ -127,6 +117,5 @@ extension HomePage: NSTableViewDelegate {
                 NSNotificationCenter.defaultCenter().postNotificationName("hideHomePage", object: nil)
                 NSNotificationCenter.defaultCenter().postNotificationName("refreshMyTableView", object: nil)
                 NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
-            }
-    }
+        }
 }
