@@ -205,6 +205,13 @@ class ProductDP: NSViewController {
     @IBOutlet weak var searchedWord: NSSearchFieldCell!
     @IBAction func searchField(sender: NSSearchField) {
         if searchedWord.stringValue != "" {
+            
+            //Sanity check for special characters
+            var allowedCharacters:NSCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789 /")
+            if ((searchedWord.stringValue as NSString).rangeOfCharacterFromSet(allowedCharacters.invertedSet).location != NSNotFound){
+                self.errorHandler.stringValue = "Could not handle special characters."
+                return }
+                    
             self.progressIndicator.startAnimation(self)
             clearProductList()
             clearProductDetailsPage ()
@@ -241,9 +248,15 @@ class ProductDP: NSViewController {
         AppDelegate.globalValues.flagToHideSearch = true
         NSNotificationCenter.defaultCenter().postNotificationName("hideMySearch", object: nil)
     }
+
+    func inputWordSanityCheck () {
+        var allowedCharacters:NSCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789 /")
+        if ((searchedWord.stringValue as NSString).rangeOfCharacterFromSet(allowedCharacters.invertedSet).location != NSNotFound){
+            println("Could not handle special characters")
+            return
+        } else { println("ridi")}
+    }
 }
-
-
 
 // Give the table number of rows
 extension ProductDP: NSTableViewDataSource {
